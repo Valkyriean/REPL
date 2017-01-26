@@ -32,6 +32,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var api = require('./routes/api');
+var users = require('./routes/users');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/test');
 var db = mongoose.connection;
@@ -52,3 +53,4 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use('/api',api);
+app.use('/users',users);
