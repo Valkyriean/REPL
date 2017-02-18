@@ -1,30 +1,26 @@
-<form name="loginForm" class="loginForm" novalidate >
+<form name="LoginForm" class="loginForm" novalidate >
     <div class="loginblock1"></div>
 
     <div class="input-container">
-        <input name="email" type="email" id="EnterText" placeholder="Please enter your E-mail"
-               ng-model="logindata.username" ng-required="true"/>
-        <div ng-messages="loginForm.email.$error" role="alert">
+        <div ng-messages="LoginForm.email.$error" role="alert">
             <div ng-message="required" class="error">Please enter a value for this field.</div>
-            <div ng-message="email" class="error">This field must be a valid email address.</div>
+            <div ng-message="email" class="error">Please enter a proper email address.</div>
         </div>
+        <input name="email" type="email" id="EnterText" placeholder="Email address" ng-model="data.email" ng-required="true" email/>
     </div>
 
     <div class="input-container">
-        <input name="password" type="password" id="EnterPassword" placeholder="Please enter your Password"
-               ng-model="logindata.password" ng-required="true"/>
-        <div ng-messages="loginForm.password.$error" role="alert">
+        <div ng-messages="LoginForm.pass.$error" role="alert">
             <div ng-message="required" class="error">Please enter a value for this field.</div>
         </div>
+        <input name="pass" type="password" id="EnterPassword" placeholder="Password" ng-model="data.pass" ng-required="true"/>
     </div>
 
     <div class="input-container">
-        <button class="loginbut" type="button" id="Button"
-                ng-click="login(loginForm)" ng-disabled="!loginForm.$valid" >Login</button>
-        <button class="loginbut" id="SignButton" ng-click="signupbut()">Sign up</button>
+        <button class="loginbut" type="button" id="Button" ng-click="login()" ng-disabled="!(LoginForm.$valid)" >Login</button>
     </div>
 
-
-    <div class="loginlyp" ng-click="lost()">Lost your password?</div>
+    <button class="loginbut" id="SignButton" ng-click="goState('signup')">Don't have a account?</button>
+    <button class="loginlyq" id="LostButton" ng-click="goState('retrieve')">Lost your password?</button>
 
 </form>
