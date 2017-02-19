@@ -1,26 +1,28 @@
-<form name="LoginForm" class="loginForm" novalidate >
+<form ng-controller="LoginCont" name="LoginForm" class="loginForm" novalidate>
+
     <div class="loginblock1"></div>
+    <div class="login">Login</div>
 
     <div class="input-container">
         <div ng-messages="LoginForm.email.$error" role="alert">
             <div ng-message="required" class="error">Please enter a value for this field.</div>
             <div ng-message="email" class="error">Please enter a proper email address.</div>
         </div>
-        <input name="email" type="email" id="EnterText" placeholder="Email address" ng-model="data.email" ng-required="true" email/>
+        <input name="email" type="text" id="EnterText" placeholder="Email address" ng-model="data.email" ng-required="true" email/>
     </div>
 
     <div class="input-container">
         <div ng-messages="LoginForm.pass.$error" role="alert">
             <div ng-message="required" class="error">Please enter a value for this field.</div>
         </div>
-        <input name="pass" type="password" id="EnterPassword" placeholder="Password" ng-model="data.pass" ng-required="true"/>
+        <input name="pass" type="password" id="EnterPassword" placeholder="Password" ng-model="data.pass" ng-required="true" pass/>
     </div>
 
     <div class="input-container">
-        <button class="loginbut" type="button" id="Button" ng-click="login()" ng-disabled="!(LoginForm.$valid)" >Login</button>
+        <input class="loginbut" type="button" id="Button" ng-click="login()" ng-disabled="!(LoginForm.$valid)" value="Login">
     </div>
 
-    <button class="loginbut" id="SignButton" ng-click="goSignup('signup')">Don't have a account?</button>
-    <button class="loginlyq" id="LostButton" ng-click="goRetrieve('retrieve')">Lost your password?</button>
+    <input class="loginbut" id="SignButton" ng-click="goState('signup')" value="Don't have a account?">
+    <input class="loginlyq" id="LostButton" ng-click="goState('retrieve')" value="Lost your password?">
 
 </form>
