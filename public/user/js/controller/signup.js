@@ -4,10 +4,10 @@
 var app = angular.module('User');
 app.controller('LoginCont', function($scope, $state, $http) {
     $scope.data = {};
-    $scope.goState = function(add) {
-        $state.go(add);
+    $scope.backToLogin = function() {
+        $state.go("login");
     };
-    $scope.login = function() {
+    $scope.confirmbutton = function() {
         $http.post('/api', $scope.data).success(function(res){
             if(res.status == "Success") {
                 window.location.href = "../index.html";

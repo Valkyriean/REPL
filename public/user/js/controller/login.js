@@ -4,8 +4,11 @@
 var app = angular.module('User');
 app.controller('LoginCont', function($scope, $state, $http) {
     $scope.data = {};
-    $scope.goState = function(add) {
-        $state.go(add);
+    $scope.goSignup = function() {
+        $state.go("signup");
+    };
+    $scope.goRetrieve = function() {
+        $state.go("retrieve");
     };
     $scope.login = function() {
         $http.post('/api', $scope.data).success(function(res){
