@@ -1,9 +1,32 @@
 var express = require('express');
 var router = express.Router();
-var validation = require('../libs/validation');
-var encryption = require('../libs/encryption');
 var User = require('../models/UserModel');
 var jwt = require('jsonwebtoken');
+const crypto = require('crypto');
+var secretKey = "alexsupreme";
+
+
+function encrypt(str){
+    var cipher = crypto.createCipher('aes192', secretKey);
+    var encrypted = cipher.update(str, 'utf8', 'hex');
+    encrypted += cipher.final('hex');
+    return encrypted;
+}
+
+function isEmail(str){
+    var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+    return reg.test(str);
+}
+
+function goodPassword(str){
+    var reg =/^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{6,22}$/;
+    return reg.test(str);
+}
+
+function goodName(str){
+    var reg =/^[A-Za-z]{1,}$/;
+    return reg.test(str);
+}
 
 /* GET users listing. */
 router.post('/login', function(req, res) {
@@ -77,8 +100,8 @@ router.post('/signup',function(req,res){
                     if (err) throw err;
                     console.log('User saved successfully!');
                 });
-                res.json({"status": "success"});
-                console.log("success");
+                res.json({"status": "Success"});
+                console.log("Success");
             }else{
                 res.json({"status":"repeat"});
                 console.log('repeat email');
