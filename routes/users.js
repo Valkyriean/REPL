@@ -2,31 +2,10 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/UserModel');
 var jwt = require('jsonwebtoken');
-const crypto = require('crypto');
-var secretKey = "alexsupreme";
+var encryption = require('../libs/encryption');
+var validation = require('../libs/validation');
 
 
-function encrypt(str){
-    var cipher = crypto.createCipher('aes192', secretKey);
-    var encrypted = cipher.update(str, 'utf8', 'hex');
-    encrypted += cipher.final('hex');
-    return encrypted;
-}
-
-function isEmail(str){
-    var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
-    return reg.test(str);
-}
-
-function goodPassword(str){
-    var reg =/^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{6,22}$/;
-    return reg.test(str);
-}
-
-function goodName(str){
-    var reg =/^[A-Za-z]{1,}$/;
-    return reg.test(str);
-}
 
 /* GET users listing. */
 router.post('/login', function(req, res) {
@@ -34,7 +13,7 @@ router.post('/login', function(req, res) {
     var username = req.body.username;
     var password = req.body.password;
     console.log("username is " + username + " and the password is " + password);
-    var encryptedinput = encrypt(password);
+    var encryptedinput = encryption.encrypt(password);
     console.log("The encrypted password is "+encryptedinput);
     Signup.findOne({'emailaddress':username},function(err,user){
         if(err) throw err;
@@ -64,11 +43,11 @@ router.post('/signup',function(req,res){
     var lastname = req.body.lastname;
     var password = req.body.password;
     var verifypassword = req.body.verifypassword;
-    if(!isEmail(email)){
+    if(!validation.isEmail(email)){
         //wrong email
         res.json({"status": "we"});
         console.log("wrong email");
-    }else if(!goodPassword(password)){
+    }else if(!validation.goodPassword(password)){
         //not good password
         res.json({"status": "wp"});
         console.log("wrong password");
@@ -76,11 +55,11 @@ router.post('/signup',function(req,res){
         //not same password
         res.json({"status": "dp"});
         console.log("different password");
-    }else if(!goodName(firstname)){
+    }else if(!validation.goodName(firstname)){
         //not good first name
         res.json({"status":"wf"});
         console.log("wrong first name");
-    }else if(!goodName(lastname)){
+    }else if(!validation.goodName(lastname)){
         //not good last name
         res.json({"status":"wl"});
         console.log("wrong last name");
