@@ -4,10 +4,10 @@
     <div class="signup">Sign up</div>
 
     <div class="signuptext" id="email">E-mail Address: </div>
-    <input name="email" class="signupbox" id= "emailInput" type="email"
+    <input name="email" class="signupbox" id= "emailInput" type="text"
            ng-model="signupdata.email" ng-required="true" email>
     <div ng-messages="SignupForm.email.$error" role="alert">
-        <div ng-message="required" class="error">Please enter a value for this field.</div>
+        <div ng-message="required" class="error">Please enter a proper email address.</div>
         <div ng-message="email" class="error">This field must be a valid email address.</div>
     </div>
 
@@ -43,7 +43,8 @@
         <div ng-message="conf" class="error">The two passwords are not same.</div>
     </div>
 
-    <br><button class="signupbut" id=submit ng-click="confirmbutton(SignupForm)">Confirm</button>
-    <button class="signupback" id="signBack" ng-click="backToLogin()">Back</button>
+    <br/>
+    <input type="button" class="signupbut" id=submit ng-click="confirm(SignupForm)" value="Confirm"/>
+    <input type="button" class="signupback" id="signBack" ng-click="goState('login')" value="Back"/>
 
 </form>
