@@ -16,3 +16,5 @@ exports.goodName = function(str){
     var reg =/^[A-Za-z]{1,}$/;
     return reg.test(str);
 };
+
+// THIS IS THE OLD VERSION CODES THAT NOT BEING USED ANYMORE

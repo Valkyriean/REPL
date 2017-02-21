@@ -11,3 +11,4 @@ exports.encrypt = function(str){
     return encrypted;
 };
 
+// THIS IS THE OLD VERSION CODES THAT NOT BEING USED ANYMORE

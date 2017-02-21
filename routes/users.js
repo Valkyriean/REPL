@@ -6,7 +6,6 @@ var encryption = require('../libs/encryption');
 var validation = require('../libs/validation');
 
 
-
 /* GET users listing. */
 router.post('/login', function(req, res) {
     console.log("login connected");
@@ -15,7 +14,7 @@ router.post('/login', function(req, res) {
     console.log("username is " + username + " and the password is " + password);
     var encryptedinput = encryption.encrypt(password);
     console.log("The encrypted password is "+encryptedinput);
-    Signup.findOne({'emailaddress':username},function(err,user){
+    User.findOne({'emailaddress':username},function(err,user){
         if(err) throw err;
         if(user==null){
             console.log('user '+username+' is not found ');
@@ -64,7 +63,7 @@ router.post('/signup',function(req,res){
         res.json({"status":"wl"});
         console.log("wrong last name");
     }else{
-        Signup.findOne({'emailaddress':email},function(err,user){
+        User.findOne({'emailaddress':email},function(err,user){
             if(err) throw err;
             if(user==null){
                 var encrypted = encryption.encrypt(password);
