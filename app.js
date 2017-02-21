@@ -20,13 +20,6 @@
  *sudo service mongod stop
  *================================================
  *
- *
- *
- * Modules:
- * mongoose@4.7.7
- *
- *
- *
  */
 
 var express = require('express');

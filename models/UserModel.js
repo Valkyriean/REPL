@@ -14,7 +14,6 @@ var User = new Schema({
     lastname: String,
     password: { type: String, required: true }
 });
-
-
+//TODO This is just for test.
 
 module.exports = mongoose.model('User', User);
