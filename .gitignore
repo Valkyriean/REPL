@@ -48,6 +48,8 @@ Temporary Items
 
 # Customed by Alex
 .idea/*
+node_modules/*
+public/a-lib/*
 # not sure yet .bin/*
 
 # for help check url: http://www.cnblogs.com/haiq/archive/2012/12/26/2833746.html but it was in chinese.
