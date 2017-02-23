@@ -1,0 +1,17 @@
+{
+  "name": "REPL",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "David davidchd@outlook.com"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Valkyriean/REPL",
+  "dependencies": {
+    "angular": "^1.6.2",
+    "angular-cookies": "^1.6.2",
+    "angular-messages": "^1.6.2",
+    "angular-ui-router": "^0.4.2",
+    "angular-resource": "^1.6.2"
+  }
+}
