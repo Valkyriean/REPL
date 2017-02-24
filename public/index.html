@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <link href="users/css/main.css" rel="stylesheet" type="text/css"/>
+
     <script src="a-lib/angular/angular.min.js"></script>
     <script src="a-lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="a-lib/angular-messages/angular-messages.min.js"></script>
     <script src="a-lib/angular-cookies/angular-cookies.min.js"></script>
     <script src="a-lib/angular-resource/angular-resource.min.js"></script>
+
+    <script src="b-js/main.js"></script>
+    <script src="b-js/directive.js"></script>
+
+    <script src="users/controller/login.js"></script>
+    <script src="users/controller/signup.js"></script>
+    <script src="users/controller/retrieve.js"></script>
+
     <style type="text/css"></style>
+
 </head>
-<body ng-app="Main" bgcolor="white">
-<div style="height: 30px"></div>
-<input type="button" class="mainButton" id="mainButton" ng-click="$state.go('login')">
+
+<body ng-app="User" bgcolor="white">
+
+    <div style="height: 30px"></div>
+
+    <ui-view></ui-view>
+
 </body>
 </html>
