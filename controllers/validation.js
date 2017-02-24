@@ -18,5 +18,22 @@ var goodName = function(str){
 };
 
 exports.validation = function(req,res,next){
-
+    var a = !validation.isEmail(req.body.email);
+    var b = !validation.goodPassword(req.body.password);
+    var c = req.body.password != req.body.verifypassword;
+    var d = !validation.goodName(req.body.firstname);
+    var e = !validation.goodName(req.body.lastname);
+    if(a || b || c || d || e) {
+        res.json({"status": "failed"});
+    }else{
+        User.findOne({'emailaddress':email},function(err,user){
+            if(err) throw err;
+            if(user==null){
+                next();
+            }else{
+                res.json({"status":"repeat"});
+                console.log('repeat email');
+            }
+        });
+    }
 };

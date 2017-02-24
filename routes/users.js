@@ -78,7 +78,7 @@ router.post('/signup',function(req,res){
                     if (err) throw err;
                     console.log('User saved successfully!');
                 });
-                res.json({"status": "Success"});
+                res.json({"status": "success"});
                 console.log("Success");
             }else{
                 res.json({"status":"repeat"});
