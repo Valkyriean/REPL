@@ -1,7 +1,7 @@
 /**
  * Created by David on 06/02/2017.
  */
-angular.module('User').directive('email', function() {
+angular.module('REPL').directive('email', function() {
     var filter = /^[A-Za-zd]+([-_.][A-Za-zd]+)*@([A-Za-zd]+[-.])+[A-Za-zd]{2,5}$/;
     return {
         require: 'ngModel',
@@ -16,7 +16,7 @@ angular.module('User').directive('email', function() {
         }
     }
 });
-angular.module('User').directive('first', function() {
+angular.module('REPL').directive('first', function() {
     var filter = /^[a-zA-Z]{1,10}$/;
     return {
         require: 'ngModel',
@@ -31,7 +31,7 @@ angular.module('User').directive('first', function() {
         }
     }
 });
-angular.module('User').directive('last', function() {
+angular.module('REPL').directive('last', function() {
     var filter = /^[a-zA-Z]{2,10}$/;
     return {
         require: 'ngModel',
@@ -46,7 +46,7 @@ angular.module('User').directive('last', function() {
         }
     }
 });
-angular.module('User').directive('pass', function() {
+angular.module('REPL').directive('pass', function() {
     var filter = /^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{6,22}$/;
     return {
         require: 'ngModel',
@@ -61,7 +61,7 @@ angular.module('User').directive('pass', function() {
         }
     }
 });
-angular.module('User').directive('conf', function() {
+angular.module('REPL').directive('conf', function() {
     return {
         require: 'ngModel',
         restrict: 'A',

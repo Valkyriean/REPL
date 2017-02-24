@@ -1,7 +1,7 @@
 /**
  * Created by David on 06/02/2017.
  */
-var app = angular.module('User', ['ui.router', 'ngMessages']);
+var app = angular.module('REPL', ['ui.router', 'ngMessages']);
 app.config(function($stateProvider, $urlRouterProvider) {
     var login = {
         name: 'login',
