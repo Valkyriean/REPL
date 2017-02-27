@@ -1,6 +1,7 @@
 /**
  * Created by phant on 2017/2/9.
  */
+var User = require('../models/UserModel');
 
 var isEmail = function(str){
     var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;

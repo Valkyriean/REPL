@@ -25,7 +25,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var api = require('./routes/api');
-var users = require('./routes/users');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/test');
 var db = mongoose.connection;
