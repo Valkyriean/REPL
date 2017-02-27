@@ -3,8 +3,6 @@
  */
 var User = require('../models/UserModel');
 
-
-
 exports.saveAccount = function(req,res,next){
     var newUser = new User({
         emailaddress: req.body.email,
@@ -19,6 +17,5 @@ exports.saveAccount = function(req,res,next){
             console.log('User saved successfully!');
             res.json({"status": "success"});
         }
-
     });
 };

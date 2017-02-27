@@ -16,7 +16,7 @@ exports.findUser = function(req, res, next) {
                 res.json({"status": "success", "token": token});
                 console.log("the token is " + token);
                 console.log("success");
-                next(); 
+                next();
             }
             else {
                 res.json({"status": "failed"});
