@@ -1,6 +1,7 @@
-var jwt = require('jsonwebtoken');
-var secretKey = "alexsupreme";
 var User = require('../../models/UserModel');
+var jwt = require('jsonwebtoken');
+var secretKey = require('../../String').secretKey;
+
 
 exports.readToken = function(req,res,next){
     if(req.body.token == null){

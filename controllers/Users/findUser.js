@@ -1,6 +1,6 @@
 var User = require('../../models/UserModel');
 var jwt = require('jsonwebtoken');
-var secretKey = "alexsupreme";
+var secretKey = require('../../String').secretKey;
 
 exports.findUser = function(req, res, next) {
     var email = req.body.username;
