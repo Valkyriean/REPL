@@ -4,9 +4,7 @@
 var gulp=require("gulp");
 var nodemon=require("gulp-nodemon");
 
-
-gulp.task("default",[]);
-
+gulp.task("default",["server"]);
 
 gulp.task("server",function () {
     nodemon({
@@ -14,4 +12,3 @@ gulp.task("server",function () {
         env:{'NODE_ENV':'development'}
     });
 });
-
