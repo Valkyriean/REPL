@@ -1,7 +1,7 @@
 /**
  * Created by phant on 2017/2/9.
  */
-var User = require('../models/UserModel');
+var User = require('../../models/UserModel');
 
 var isEmail = function(str){
     var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
@@ -19,20 +19,20 @@ var goodName = function(str){
 };
 
 exports.validation = function(req,res,next){
-    var a = !validation.isEmail(req.body.email);
-    var b = !validation.goodPassword(req.body.password);
+    var a = !isEmail(req.body.email);
+    var b = !goodPassword(req.body.password);
     var c = req.body.password != req.body.verifypassword;
-    var d = !validation.goodName(req.body.firstname);
-    var e = !validation.goodName(req.body.lastname);
+    var d = !goodName(req.body.firstname);
+    var e = !goodName(req.body.lastname);
     if(a || b || c || d || e) {
-        res.json({"status": "failed"});
+        res.json({"status": "failed","message":"validation failed"});
     }else{
-        User.findOne({'emailaddress':email},function(err,user){
+        User.findOne({'emailaddress':req.body.email},function(err,user){
             if(err) throw err;
             if(user==null){
                 next();
             }else{
-                res.json({"status":"repeat"});
+                res.json({"status":"failed","message":"repeat email"});
                 console.log('repeat email');
             }
         });

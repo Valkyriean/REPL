@@ -1,7 +1,7 @@
 /**
  * Created by phant on 2017/2/27.
  */
-var User = require('../models/UserModel');
+var User = require('../../models/UserModel');
 
 exports.saveAccount = function(req,res,next){
     var newUser = new User({
@@ -12,7 +12,7 @@ exports.saveAccount = function(req,res,next){
     });
     newUser.save(function(err) {
         if (err) {
-            res.json({"status": "savefailed"});
+            res.json({"status": "failed", "message":"failed to save account"});
         }else{
             console.log('User saved successfully!');
             res.json({"status": "success"});
