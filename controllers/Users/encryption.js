@@ -12,6 +12,6 @@ var encrypt = function(str){
 };
 
 exports.enctyption = function(req,res,next){
-    req.encrypted = encrypt(req.body.password);
+    req.encrypted = encrypt(req.body.pass);
     next();
 };
