@@ -12,7 +12,7 @@ exports.findUser = function(req, res, next) {
             if(req.encrypted == user.pass) {
                 var token = jwt.sign({
                     exp: Math.floor(Date.now() / 1000) + (60 * 60),
-                    data: user.id
+                    data: user.email
                 },secretKey);
                 res.json({"status": "success", "user": user,"token": token});
                 console.log("success, the token is " + token);
