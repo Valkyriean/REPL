@@ -2,7 +2,7 @@
  * Created by David on 06/02/2017.
  */
 angular.module('REPL').directive('email', function() {
-    var filter = /^[A-Za-zd]+([-_.][A-Za-zd]+)*@([A-Za-zd]+[-.])+[A-Za-zd]{2,5}$/;
+    var filter = /^[A-Za-zd]+([-_.][A-Za-zd]+)*@([A-Za-z0-9d]+[-.])+[A-Za-zd]{2,5}$/;
     return {
         require: 'ngModel',
         restrict: 'A',

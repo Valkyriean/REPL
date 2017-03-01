@@ -7,19 +7,19 @@ app.config(function($stateProvider, $urlRouterProvider) {
         name: 'login',
         url: '/login',
         controller: 'LoginCont',
-        templateUrl: 'html/login.html'
+        templateUrl: 'users/html/login.html'
     };
     var signup = {
         name: 'signup',
         url: '/signup',
         controller: 'SignCont',
-        templateUrl: 'html/signUp.html'
+        templateUrl: 'users/html/signUp.html'
     };
     var retrieve = {
         name: 'retrieve',
         url: '/retrieve',
         controller: 'RetrCont',
-        templateUrl: 'html/retrieve.html'
+        templateUrl: 'users/html/retrieve.html'
     };
     $stateProvider.state(login);
     $stateProvider.state(signup);
