@@ -10,7 +10,7 @@ app.controller('SignCont', function($scope, $state, $http) {
     $scope.confirm = function() {
         $http.post('/api/users/signup', $scope.data).success(function(res){
             if(res.status == "success") {
-                window.location.href = "../index.html";
+                window.location.href = "../../index.html";
             } else {
                 alert("Sorry, sign up failed.");
             }

@@ -66,7 +66,7 @@ angular.module('REPL').directive('conf', function() {
         require: 'ngModel',
         restrict: 'A',
         link: function(scope, elem, attr, ctrl) {
-            ctrl.$validators.pass = function(value) {
+            ctrl.$validators.conf = function(value) {
                 if(value == scope.data.pass) {
                     return true;
                 }

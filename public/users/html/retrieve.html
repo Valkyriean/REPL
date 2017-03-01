@@ -1,17 +1,14 @@
-<form ng-controller="RetrCont" name="RetrieveForm" class="RetrieveForm" novalidate>
-    <div class="loginblock1"></div>
-
-    <div class="retrievetext" id="retrieveemail">E-mail Address: </div>
-
+<form ng-controller="RetrCont" name="RetrieveForm" novalidate>
+    <div>E-mail Address: </div>
     <div ng-messages="RetrieveForm.email.$error" role="alert">
         <div ng-message="required" class="error">Please enter a value for this field.</div>
         <div ng-message="email" class="error">Please enter a proper email address.</div>
     </div>
-    <input name="email" class="retrievebox" id= "retrieveInput" type="text" ng-model="data.email" ng-required="true" email/>
+    <input name="email" type="text" ng-model="data.email" ng-required="true" email/>
 
     <br/>
 
-    <input type="button" class="retreievebut" id="retreievebut" ng-click="confirm()" value="Retrieve Password">
-    <input type="button" class="retreiveback" id="retreiveback" ng-click="goState('login')" value="Back to login.">
+    <input type="button" ng-click="confirm()" value="Retrieve Password">
+    <input type="button" ng-click="goState('login')" value="Back to login.">
 
 </form>

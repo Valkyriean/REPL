@@ -10,7 +10,7 @@ app.controller('LoginCont', function($scope, $state, $http) {
     $scope.confirm = function() {
         $http.post('/api/users/login', $scope.data).success(function(res){
             if(res.status == "success") {
-                window.location.href = "../index.html";
+                goState('classroom');
             } else {
                 alert("Sorry, login failed.");
             }
