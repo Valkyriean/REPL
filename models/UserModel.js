@@ -12,7 +12,7 @@ var User = new Schema({
     emailaddress: String,
     firstname: String,
     lastname: String,
-    password: { type: String, required: true }
+    pass: { type: String, required: true }
 });
 //TODO This is just for test.
 

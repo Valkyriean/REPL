@@ -20,8 +20,8 @@ var goodName = function(str){
 
 exports.validation = function(req,res,next){
     var a = !isEmail(req.body.email);
-    var b = !goodPassword(req.body.password);
-    var c = req.body.password != req.body.verifypassword;
+    var b = !goodPassword(req.body.pass);
+    var c = req.body.pass != req.body.conf;
     var d = !goodName(req.body.firstname);
     var e = !goodName(req.body.lastname);
     if(a || b || c || d || e) {

@@ -5,8 +5,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var Classroom = new Schema({
-    UserID: String,
-    AssignmentID: String,
+    UserID: number,
+    AssignmentID: number,
     ClassRoom: String,
     ProgramLanguage: String
 });

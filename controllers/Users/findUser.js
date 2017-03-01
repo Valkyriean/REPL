@@ -1,16 +1,15 @@
 var User = require('../../models/UserModel');
 var jwt = require('jsonwebtoken');
-var secretKey = require('../../String').secretKey;
+var secretKey = require('../../Strings').secretKey;
 
 exports.findUser = function(req, res, next) {
-    var email = req.body.username;
-    User.findOne({'emailaddress': email}, function(err, user) {
+    User.findOne({'emailaddress': req.body.email}, function(err, user) {
         if(err) throw err;
         if(user == null) {
-            console.log("user" + email + "is not found");
+            console.log("user is not found");
             res.json({"status": "failed","message":"cant find user"});
         }else {
-            if(req.encrypted == user.password) {
+            if(req.encrypted == user.pass) {
                 var token = jwt.sign({
                     exp: Math.floor(Date.now() / 1000) + (60 * 60),
                     data: user.id

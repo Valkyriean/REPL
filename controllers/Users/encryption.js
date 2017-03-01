@@ -2,7 +2,7 @@
  * Created by phant on 2017/2/9.
  */
 const crypto = require('crypto');
-var secretKey = require('../../String').secretKey;
+var secretKey = require('../../Strings').secretKey;
 
 var encrypt = function(str){
     var cipher = crypto.createCipher('aes192', secretKey);
