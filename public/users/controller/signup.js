@@ -3,7 +3,13 @@
  */
 var app = angular.module('REPL');
 app.controller('SignCont', function($scope, $state, $http) {
-    $scope.data = {};
+    $scope.data = {
+        "email": "",
+        "firstname": "",
+        "lastname": "",
+        "pass": "",
+        "conf": ""
+    };
     $scope.goState = function(add) {
         $state.go(add);
     };
