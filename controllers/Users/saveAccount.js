@@ -5,7 +5,7 @@ var User = require('../../models/UserModel');
 
 exports.saveAccount = function(req,res,next){
     var newUser = new User({
-        emailaddress: req.body.email,
+        email: req.body.email,
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         pass: req.encrypted

@@ -10,10 +10,10 @@ exports.findUser = function(req, res, next) {
             res.json({"status": "failed","message":"cant find user"});
         }else {
             if(req.encrypted == user.pass) {
+                console.log(user);
                 var token = jwt.sign({
-                    exp: Math.floor(Date.now() / 1000) + (60 * 60),
-                    data: user.email
-                },secretKey);
+                    data: user.emailaddress
+                },secretKey, { expiresIn: '1h' });
                 res.json({"status": "success", "user": user,"token": token});
                 console.log("success, the token is " + token);
                 next();
