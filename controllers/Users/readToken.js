@@ -5,7 +5,7 @@ var secretKey = require('../../Strings').secretKey;
 
 exports.readToken = function(req,res,next){
     if(req.body.token == null){
-
+        res.json({"status":"failed","message":"null token"});
     }else{
         jwt.verify(req.body.token, secretKey,function(err,decodede){
             if(err){
