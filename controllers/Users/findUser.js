@@ -3,7 +3,7 @@ var jwt = require('jsonwebtoken');
 var secretKey = require('../../Strings').secretKey;
 
 exports.findUser = function(req, res, next) {
-    User.findOne({'emailaddress': req.body.email}, function(err, user) {
+    User.findOne({'email': req.body.email}, function(err, user) {
         if(err) throw err;
         if(user == null) {
             console.log("user is not found");
@@ -12,8 +12,8 @@ exports.findUser = function(req, res, next) {
             if(req.encrypted == user.pass) {
                 console.log(user);
                 var token = jwt.sign({
-                    data: user.emailaddress
-                },secretKey, { expiresIn: '1h' });
+                    data: user.email
+                },secretKey, { expiresIn: '24h' });
                 res.json({"status": "success", "user": user,"token": token});
                 console.log("success, the token is " + token);
                 next();
