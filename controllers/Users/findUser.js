@@ -13,7 +13,7 @@ exports.findUser = function(req, res, next) {
                 console.log(user);
                 var token = jwt.sign({
                     data: user.email
-                },secretKey, { expiresIn: '1h' });
+                },secretKey, { expiresIn: '24h' });
                 res.json({"status": "success", "user": user,"token": token});
                 console.log("success, the token is " + token);
                 next();
