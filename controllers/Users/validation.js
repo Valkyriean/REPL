@@ -18,7 +18,7 @@ var goodName = function(str){
     return reg.test(str);
 };
 
-exports.validation = function(req,res,next){
+exports.SignUpvalidation = function(req,res,next){
     var a = !isEmail(req.body.email);
     var b = !goodPassword(req.body.pass);
     var c = req.body.pass != req.body.conf;
@@ -27,7 +27,7 @@ exports.validation = function(req,res,next){
     if(a || b || c || d || e) {
         res.json({"status": "failed","message":"validation failed"});
     }else{
-        User.findOne({'emailaddress':req.body.email},function(err,user){
+        User.findOne({'email':req.body.email},function(err,user){
             if(err) throw err;
             if(user==null){
                 next();

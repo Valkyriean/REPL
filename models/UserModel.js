@@ -3,7 +3,7 @@
  */
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var IDcounter = require('IDcounter').nextID('Users');
+var IDcounter = require('./IDcounter');
 
 var User = new Schema({
     UserID: Number,
@@ -14,14 +14,15 @@ var User = new Schema({
 });
 
 User.pre('save', function(next,done){
+    console.log("llllllllllllllooooooooollll");
     if(this.isNew){
-        IDcounter.next(function(theNextID){
-            this.UserID = theNextID;
-            next();
-        });
-    }else{
+        this.UserID = IDcounter.nextID("Users");
+        console.log(this.UserID + "and yes is new");
         next();
-    };
+    }else{
+        console.log("old");
+        next();
+    }
 });
 
 
