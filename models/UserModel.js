@@ -3,17 +3,26 @@
  */
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var IDcounter = require('IDcounter').nextID('Users');
 
 var User = new Schema({
-    // UserID: String,
-    // email: String,
-    // password: String,
-    // state: String
+    UserID: Number,
     email: String,
     firstname: String,
     lastname: String,
     pass: { type: String, required: true }
 });
-//TODO This is just for test.
+
+User.pre('save', function(next,done){
+    if(this.isNew){
+        IDcounter.next(function(theNextID){
+            this.UserID = theNextID;
+            next();
+        });
+    }else{
+        next();
+    };
+});
+
 
 module.exports = mongoose.model('User', User);
