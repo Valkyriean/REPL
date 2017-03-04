@@ -1,27 +1,3 @@
-/**
- * Created by Li on 2017/1/16.
- * Code to run Mongod on Windows
- * open cmd first, and copy those code
- *
- *================================================
- * cd C:\Program Files\MongoDB\Server\3.2\bin
- * mongod --dbpath C:\Projects\data\db
- *================================================
- *
- * On Linux ubuntu start code is
- *
- * ===============================================
- *sudo service mongod start
- *================================================
- *
- *
- *stop code is
- *================================================
- *sudo service mongod stop
- *================================================
- *
- */
-
 var express = require('express');
 var bodyParser = require('body-parser');
 var api = require('./routes/api');
@@ -45,3 +21,27 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use('/api',api);
+
+/**
+ * Created by Li on 2017/1/16.
+ * Code to run Mongod on Windows
+ * open cmd first, and copy those code
+ *
+ *================================================
+ * cd C:\Program Files\MongoDB\Server\3.2\bin
+ * mongod --dbpath C:\Projects\data\db
+ *================================================
+ *
+ * On Linux ubuntu start code is
+ *
+ * ===============================================
+ *sudo service mongod start
+ *================================================
+ *
+ *
+ *stop code is
+ *================================================
+ *sudo service mongod stop
+ *================================================
+ *
+ */
