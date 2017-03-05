@@ -26,7 +26,7 @@
     <div>Password: </div>
     <div ng-messages="SignForm.pass.$error" role="alert">
         <div ng-message="required" class="error">Please enter a value for this field.</div>
-        <div ng-message="pass" class="error">This field must be a valid password.</div>
+        <div ng-message="pass" class="error">Password has to be more than six characters.</div>
     </div>
     <input name="pass" type="password" ng-model="data.pass" ng-required="true" pass/>
 
