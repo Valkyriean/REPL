@@ -8,20 +8,22 @@ var IDcounterModel = new mongoose.Schema({
 var IDcounter=mongoose.model('IDcounter', IDcounterModel);
 
 exports.nextID = function(model){
-    IDcounter.findOne({"model":model},function(err, data){
-        if(err){ throw(err); }
-        if(data==null){
-            IDcounter.create({model:model,id:1}, function(err,number){
+    return{
+        next: function(callback){
+            IDcounter.find({"model":model},function(err, data){
                 if(err) { throw(err); }
-                console.log(number.id+"created");
-                return number.id;
-            });
-        }else{
-            IDcounter.findOneAndUpdate({"model": model}, { $inc: { id: 1 } }, {new: true}, function(err,number){
-                if(err) { throw(err); }
-                console.log(number.id+"update");
-                return number.id;
+                if(data.length<1){
+                    IDcounter.create({model:model,id:1}, function(err,number){
+                        if(err) { throw(err); }
+                        callback(number.id);
+                    });
+                }else{
+                    IDcounter.findOneAndUpdate({"model": model}, { $inc: { id: 1 } }, {new: true}, function(err,number){
+                        if(err) { throw(err); }
+                        callback(number.id);
+                    });
+                }
             });
         }
-    });
+    };
 };
