@@ -7,7 +7,7 @@ app.controller('LoginCont', function($cookieStore, $scope, $state, $http) {
         "token": $cookieStore.get("WatchCatLoginToken")
     };
     window.onload = function() {
-        $http.post('/api/users/token', token).success(function(res) {
+        $http.post('/api/users/token', token).then(function(res) {
             if(res.status == "success") {
                 goState('classroom');
             } else {
@@ -23,11 +23,16 @@ app.controller('LoginCont', function($cookieStore, $scope, $state, $http) {
         $state.go(add);
     };
     $scope.confirm = function() {
-        $http.post('/api/users/login', $scope.data).success(function(res) {
+        $http.post('/api/users/login', $scope.data).then(function(res) {
+            alert("Helloooooo");
             if(res.status == "success") {
                 goState('classroom');
             } else {
-                alert("Sorry, login failed.");
+                if(res.message == "repeat email") {
+                    alert("Email address already exist.");
+                } else {
+                    alert("Sorry, login in failed.")
+                }
             }
         });
     };
