@@ -24,11 +24,11 @@ app.controller('LoginCont', function($cookieStore, $scope, $state, $http) {
     };
     $scope.confirm = function() {
         $http.post('/api/users/login', $scope.data).then(function(res) {
-            alert("Helloooooo");
-            if(res.status == "success") {
-                goState('classroom');
+            console.log(res);
+            if(res.data.status == "success") {
+                $state.go('classroom');
             } else {
-                if(res.message == "repeat email") {
+                if(res.data.message == "repeat email") {
                     alert("Email address already exist.");
                 } else {
                     alert("Sorry, login in failed.")
