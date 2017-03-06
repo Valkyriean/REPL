@@ -11,7 +11,13 @@ var encrypt = function(str){
     return encrypted;
 };
 
-exports.enctyption = function(req,res,next){
+exports.encryptPass = function(req,res,next){
     req.encrypted = encrypt(req.body.pass);
+    next();
+};
+
+exports.encryptBothPass = function (req,res,next) {
+    req.encryptedOldPass = encrypt(req.body.oldPass);
+    req.encryptedNewPass = encrypt(req.body.newPass);
     next();
 };
