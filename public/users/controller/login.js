@@ -7,7 +7,7 @@ app.controller('LoginCont', function($cookieStore, $scope, $state, $http) {
         "token": $cookieStore.get("WatchCatLoginToken")
     };
     window.onload = function() {
-        $http.post('/api/users/login', token).then(function(res) {
+        $http.post('/api/users/token', token).then(function(res) {
             if(res.status == "success") {
                 goState('classroom');
             } else {
