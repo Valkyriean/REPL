@@ -14,7 +14,7 @@ app.controller('SignCont', function($scope, $state, $http) {
         $state.go(add);
     };
     $scope.confirm = function() {
-        $http.post('/api/users/signup', $scope.data).success(function(res){
+        $http.post('/api/users/signup', $scope.data).then(function(res){
             if(res.status == "success") {
                 window.location.href = "../../index.html";
             } else {
