@@ -22,21 +22,28 @@ exports.saveAccount = function(req,res,next){
 };
 
 exports.updateAccount = function(req,res,next){
-    console.log("at account");
-    User.findOne({'email':req.body.email},function (err,user) {
+    User.findOne({'email':req.body.email,'pass':req.encryptedOldPass},function (err,user) {
         if(err) throw err;
         if(user==null){
-            console.log("user is not found");
-            res.json({"status": "failed","message":"cant find user"});
-            //should't happened at all
+            console.log("user is not found or wrong pass");
+            res.json({"status": "failed","message":"cant find user or wrong pld pass"});
         }else{
-            if(user.pass==req.encryptedOldPass){
-                user.pass = req.encryptedNewPass;
-                user.save();
-                res.json({"status": "success"});
-            }else{
-                res.json({"status": "failed","message":"wrong old password"});
-            }
+            user.pass = req.encryptedNewPass;
+            user.save();
+            res.json({"status": "success"});
+        }
+    });
+};
+
+exports.deleteAccount = function(req,res){
+    User.findOne({'email':req.body.email,'pass':req.encrypted},function (err,user) {
+        if(err) throw err;
+        if(user==null){
+            console.log("user is not found or wrong pass");
+            res.json({"status": "failed","message":"cant find user or wrong pld pass"});
+        }else{
+            user.remove();
+            res.json({"status": "success"});
         }
     });
 };
