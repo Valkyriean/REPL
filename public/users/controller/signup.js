@@ -18,7 +18,11 @@ app.controller('SignCont', function($scope, $state, $http) {
             if(res.data.status == "success") {
                 window.location.href = "../../index.html";
             } else {
-                alert("Sorry, sign up failed.");
+                if(res.data.message == "repeat email") {
+                    alert("Email address already exist.");
+                } else {
+                    alert("Sorry, sign up failed.")
+                }
             }
         });
     };
