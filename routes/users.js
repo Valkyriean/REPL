@@ -12,4 +12,5 @@ router.post('/token',readToken);
 router.post('/changePass',validation.passValidation,encryption.encryptBothPass,account.updateAccount);
 router.post('/deleteUser',encryption.encryptPass,account.deleteAccount);
 
+
 module.exports = router;
