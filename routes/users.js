@@ -10,9 +10,10 @@ var sendEmail = require('../controllers/Users/sendEmail');
 router.post('/signup',validation.SignUpvalidation, encryption.encryptPass,account.saveAccount);
 router.post('/login',encryption.encryptPass,findUser);
 router.post('/token',readToken);
-router.post('/changePass',validation.passValidation,encryption.encryptBothPass,account.updateAccount);
-router.post('/deleteUser',encryption.encryptPass,account.deleteAccount);
+router.put('/changePass',validation.passValidation,encryption.encryptBothPass,account.updateAccount);
+router.delete('/deleteUser',encryption.encryptPass,account.deleteAccount);
 router.post('/sendEmail',sendEmail.sendEmail);
+
 
 
 module.exports = router;
