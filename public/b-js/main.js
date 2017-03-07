@@ -21,8 +21,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
         controller: 'RetrCont',
         templateUrl: 'users/html/retrieve.html'
     };
+    var classroom = {
+        name: 'classroom',
+        url: '/classroom',
+        controller: 'ClassroomCont',
+        templateUrl: 'classes/html/classroom.html'
+    };
     $stateProvider.state(login);
     $stateProvider.state(signup);
     $stateProvider.state(retrieve);
+    $stateProvider.state(classroom);
     $urlRouterProvider.otherwise('/login');
 });
