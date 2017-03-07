@@ -8,7 +8,7 @@ app.controller('LoginCont', function($cookieStore, $scope, $state, $http) {
     };
     window.onload = function() {
         $http.post('/api/users/token', token).then(function(res) {
-            if(res.status == "success") {
+            if(res.data.status == "success") {
                 goState('classroom');
             } else {
                 alert("Sorry, login failed.");
@@ -24,11 +24,12 @@ app.controller('LoginCont', function($cookieStore, $scope, $state, $http) {
     };
     $scope.confirm = function() {
         $http.post('/api/users/login', $scope.data).then(function(res) {
-            console.log(res);
+            alert("Helloooooo");
             if(res.data.status == "success") {
+                alert("login success");
                 $state.go('classroom');
             } else {
-                if(res.data.message == "repeat email") {
+                if(res.message == "repeat email") {
                     alert("Email address already exist.");
                 } else {
                     alert("Sorry, login in failed.")
