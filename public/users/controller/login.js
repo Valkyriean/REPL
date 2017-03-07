@@ -8,7 +8,7 @@ app.controller('LoginCont', function($cookieStore, $scope, $state, $http) {
     };
     window.onload = function() {
         $http.post('/api/users/token', token).then(function(res) {
-            if(res.status == "success") {
+            if(res.data.status == "success") {
                 goState('classroom');
             } else {
                 alert("Sorry, login failed.");
