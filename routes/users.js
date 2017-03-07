@@ -14,4 +14,5 @@ router.post('/changePass',validation.passValidation,encryption.encryptBothPass,a
 router.post('/deleteUser',encryption.encryptPass,account.deleteAccount);
 router.post('/sendEmail',sendEmail.sendEmail);
 
+
 module.exports = router;
