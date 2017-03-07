@@ -44,6 +44,7 @@ exports.deleteAccount = function(req,res){
         }else{
             user.remove();
             res.json({"status": "success"});
+            console.log("delete success");
         }
     });
 };

@@ -10,7 +10,6 @@ exports.readToken = function(req,res,next){
         jwt.verify(req.body.token, secretKey,function(err,decodede){
             if(err){
                 res.json({"status":"failed","message":"wrong or expired token"});
-
             }else{
                 User.findOne({'email':decodede.data}, function(err,user){
                     if(err){
