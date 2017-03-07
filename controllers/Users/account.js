@@ -3,7 +3,7 @@
  */
 var User = require('../../models/UserModel');
 
-exports.saveAccount = function(req,res,next){
+exports.saveAccount = function(req,res){
     var data = {
         email: req.body.email,
         firstname: req.body.firstname,
@@ -21,7 +21,7 @@ exports.saveAccount = function(req,res,next){
     });
 };
 
-exports.updateAccount = function(req,res,next){
+exports.updateAccount = function(req,res){
     User.findOne({'email':req.body.email,'pass':req.encryptedOldPass},function (err,user) {
         if(err) throw err;
         if(user==null){

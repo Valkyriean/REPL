@@ -9,8 +9,7 @@ var findUser = require('../controllers/Users/findUser').findUser;
 router.post('/signup',validation.SignUpvalidation, encryption.encryptPass,account.saveAccount);
 router.post('/login',encryption.encryptPass,findUser);
 router.post('/token',readToken);
-router.post('/changePass',validation.passValidation,encryption.encryptBothPass,account.updateAccount);
-router.post('/deleteUser',encryption.encryptPass,account.deleteAccount);
-
+router.put('/changePass',validation.passValidation,encryption.encryptBothPass,account.updateAccount);
+router.delete('/deleteUser',encryption.encryptPass,account.deleteAccount);
 
 module.exports = router;
