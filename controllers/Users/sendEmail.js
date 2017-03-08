@@ -11,16 +11,27 @@ var transporter = nodemailer.createTransport({
     }
 });
 
-exports.sendEmail = function (req,res) {
-    var mailOption = {
-        from: '1034743427@qq.com',
-        to: req.body.email,
-        subject: 'Change your REPL password',
-        text: 'www.baidu.com'//only for testing
-    };
-    transporter.sendMail(mailOption, function (err, response) {
+exports.sendEmail = function (req,res,next) {
+    User.findOne({'email': req.body.email},function (err, user) {
         if(err) throw err;
-        console.log("success");
-        res.json({"status": "success"});
+        if(user == null) {
+            console.log("user does not found");
+            res.json({"status": "success"});
+        }
+        else {
+            console.log(user);
+            var mailOption = {
+                from: '1034743427@qq.com',
+                to: req.body.email,
+                subject: 'Change your REPL password',
+                text: 'www.baidu.com'//only for testing
+            };
+            transporter.sendMail(mailOption, function (err, response) {
+                if(err) throw err;
+                console.log("success");
+                res.json({"status": "success"});
+            });
+        }
     });
+
 };
