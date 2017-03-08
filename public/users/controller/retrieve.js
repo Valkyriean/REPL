@@ -8,9 +8,9 @@ app.controller('RetrCont', function($scope, $state, $http) {
         $state.go(add);
     };
     $scope.confirm = function() {
-        $http.post('/api/users/retrieve', $scope.data).success(function(res){
+        $http.post('/api/users/sendEmail', $scope.data).then(function(res){
             if(res.status == "success") {
-                window.location.href = "../index.html";
+                alert("The new password has been sent to your email.");
             } else {
                 alert("Sorry, retrieve failed.");
             }
