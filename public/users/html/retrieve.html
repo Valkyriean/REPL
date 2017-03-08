@@ -1,5 +1,7 @@
 <form ng-controller="RetrCont" name="RetrieveForm" novalidate>
+
     <div>E-mail Address: </div>
+
     <div ng-messages="RetrieveForm.email.$error" role="alert">
         <div ng-message="required" class="error">Please enter a value for this field.</div>
         <div ng-message="email" class="error">Please enter a proper email address.</div>
