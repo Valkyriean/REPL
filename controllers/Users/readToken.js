@@ -11,10 +11,10 @@ exports.readToken = function(req,res,next){
             if(err){
                 res.json({"status":"failed","message":"wrong or expired token"});
             }else{
-                User.findOne({'email':decodede.data}, function(err,user){
+                User.findOne({'id':decodede.data}, function(err,user){
                     if(err){
                         res.json({"status": "failed","message":"token not found"});
-                        console.log("wrong token/n"+user.email+"/n"+decoded)
+                        console.log("wrong token/n"+user.id+"/n"+decoded)
                     }else{
                         res.json({"status": "success", "user": user});
                     }
