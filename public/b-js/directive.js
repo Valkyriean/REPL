@@ -75,3 +75,22 @@ angular.module('REPL').directive('conf', function() {
         }
     }
 });
+angular.module('REPL').directive('loaded', ['$cookieStore', '$http', '$state', function($cookieStore, $http, $state) {
+    return {
+        restrict: 'E',
+        scope: {
+            src: "="
+        },
+        controller: function($scope) {
+            var token = {
+                "token": $cookieStore.get("WatchCatLoginToken")
+            };
+            $http.post('/api/users/token', token).then(function(res) {
+                console.log($scope.src);
+                if(res.data.status == "success") {
+                    $state.go($scope.src);
+                }
+            });
+        }
+    }
+}]);

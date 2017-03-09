@@ -24,15 +24,4 @@ app.controller('LoginCont', function($cookieStore, $scope, $state, $http) {
            }
         });
     };
-    sendToken = function() {
-        console.log(token);
-        $http.post('/api/users/token', token).then(function(res) {
-            if(res.data.status == "success") {
-                $state.go('classroom');
-            }
-        });
-    };
 });
-window.onload = function() {
-    sendToken();
-};
