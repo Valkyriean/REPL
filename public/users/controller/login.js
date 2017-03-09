@@ -6,13 +6,6 @@ app.controller('LoginCont', function($cookieStore, $scope, $state, $http) {
     var token = {
         "token": $cookieStore.get("WatchCatLoginToken")
     };
-    window.onload = function() {
-        $http.post('/api/users/token', token).then(function(res) {
-            if(res.data.status == "success") {
-                $state.go('classroom');
-            }
-        });
-    };
     $scope.data = {
         "email": "",
         "pass": ""
@@ -22,9 +15,10 @@ app.controller('LoginCont', function($cookieStore, $scope, $state, $http) {
     };
     $scope.confirm = function() {
         $http.post('/api/users/login', $scope.data).then(function(res) {
+            console.log(res);
             if(res.data.status == "success") {
-                alert("login success");
                 $state.go('classroom');
+                $cookieStore.put("WatchCatLoginToken", res.data.token);
             } else {
                 alert("Sorry, login failed.");
            }
