@@ -11,9 +11,14 @@ app.controller('RetrCont', function($scope, $state, $http) {
         $http.post('/api/users/sendEmail', $scope.data).then(function(res){
             if(res.status == "success") {
                 alert("The new password has been sent to your email.");
+            } else if(res.status == "null") {
+                alert("The email has not been registered yet.")
             } else {
                 alert("Sorry, retrieve failed.");
             }
         });
     };
+
 });
+
+

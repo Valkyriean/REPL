@@ -1,0 +1,19 @@
+<form ng-controller="FindpassCont" name="FindpassForm" novalidate>
+
+    <div>Find Password</div>
+
+    <div ng-messages="FindpassForm.pass.$error" role="alert">
+        <div ng-message="required" class="error">Please enter a value for this field.</div>
+        <div ng-message="pass" class="error">Password has to be more than six characters.</div>
+    </div>
+    <input name="pass" type="password" ng-model="data.pass" ng-required="true" pass/>
+
+    <div ng-messages="FindpassForm.conf.$error" role="alert">
+        <div ng-message="required" class="error">Please enter a value for this field.</div>
+        <div ng-message="conf" class="error">The two passwords are not same.</div>
+    </div>
+    <input name="conf" type="password" ng-model="data.conf" ng-required="true" conf/>
+
+    <input type="button" ng-click="confirm()" ng-disabled="!(FindpassForm.$valid)" value="confirm"/>
+
+</form>
