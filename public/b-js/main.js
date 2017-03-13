@@ -21,6 +21,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
         controller: 'RetrCont',
         templateUrl: 'users/html/retrieve.html'
     };
+    var findpass = {
+        name: 'findpass',
+        url: '/findpass',
+        controller: 'FindpassCont',
+        templateUrl: 'users/html/findpass.html'
+    };
     var classroom = {
         name: 'classroom',
         url: '/classroom',
@@ -30,6 +36,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider.state(login);
     $stateProvider.state(signup);
     $stateProvider.state(retrieve);
+    $stateProvider.state(findpass);
     $stateProvider.state(classroom);
     $urlRouterProvider.otherwise('/login');
 });
