@@ -16,7 +16,7 @@ router.put('/changePass',validation.passValidation,encryption.encryptBothPass,ac
 router.delete('/deleteUser',encryption.encryptPass,account.deleteAccount);
 
 router.post('lostPass',lostPass.sendEmail);
-router.post('findPass/',encryption.encryptPass,findPass);
+router.post('findPass',encryption.encryptPass,findPass);
 
 
 
