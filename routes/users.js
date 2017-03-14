@@ -17,8 +17,8 @@ router.post('/token',readToken,dashboard.postDashboard);
 router.put('/changePass',validation.passValidation,encryption.encryptBothPass,account.updateAccount);
 router.delete('/deleteUser',encryption.encryptPass,account.deleteAccount);
 
-router.post('lostPass',lostPass.sendEmail);
-router.post('findPass',encryption.encryptPass,findPass);
+router.post('/lostPass',lostPass.sendEmail);
+router.post('/findPass',encryption.encryptPass,findPass);
 
 
 
