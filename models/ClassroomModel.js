@@ -5,10 +5,13 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var Classroom = new Schema({
-    UserID: number,
-    AssignmentID: number,
-    ClassRoom: String,
-    ProgramLanguage: String
+    classroomID: Number,
+    owner: Number,
+    teachers: Array,
+    students: Array,
+    name: String,
+    description: String,
+    programLanguage: String
 });
 
 module.exports = mongoose.model('Classroom', Classroom);
