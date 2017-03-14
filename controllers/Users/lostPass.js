@@ -6,9 +6,6 @@ var User = require('../../models/UserModel');
 var jwt = require('jsonwebtoken');
 var secretKey = require('../../Strings').secretKey;
 
-
-
-
 var transporter = nodemailer.createTransport({
     service: 'qq',
     auth: {
@@ -16,8 +13,6 @@ var transporter = nodemailer.createTransport({
         pass: 'vhkordjldgczbbfe'
     }
 });
-
-
 
 exports.sendEmail = function (req,res,next) {
     User.findOne({'email': req.body.email},function (err, user) {
