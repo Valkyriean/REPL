@@ -8,6 +8,7 @@ exports.saveAccount = function(req,res){
         email: req.body.email,
         firstname: req.body.firstname,
         lastname: req.body.lastname,
+        teacher: req.body.teacher,
         pass: req.encrypted
     };
     var newUser = new User(data);

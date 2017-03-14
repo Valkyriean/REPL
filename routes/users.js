@@ -7,11 +7,13 @@ var readToken = require('../controllers/Users/readToken').readToken;
 var findUser = require('../controllers/Users/findUser').findUser;
 var lostPass = require('../controllers/Users/lostPass');
 var findPass = require('../controllers/Users/findPass').findPass;
+var dashboard = require('../controllers/Classrooms/dashboard');
 
 
 router.post('/signup',validation.SignUpvalidation, encryption.encryptPass,account.saveAccount);
-router.post('/login',encryption.encryptPass,findUser);
-router.post('/token',readToken);
+router.post('/login',encryption.encryptPass,findUser,dashboard.postDashboard);
+router.post('/token',readToken,dashboard.postDashboard);
+
 router.put('/changePass',validation.passValidation,encryption.encryptBothPass,account.updateAccount);
 router.delete('/deleteUser',encryption.encryptPass,account.deleteAccount);
 

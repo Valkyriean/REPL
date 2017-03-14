@@ -14,9 +14,11 @@ exports.readToken = function(req,res,next){
                 User.findOne({'userID':decoded.data}, function(err,user){
                     if(err){
                         res.json({"status": "failed","message":"token not found"});
-                        console.log("wrong token/n"+user.userID+"/n"+decoded)
+                        console.log("wrong token/n"+user.userID+"/n"+decoded.data)
                     }else{
-                        res.json({"status": "success", "user": user});
+                        // res.json({"status": "success", "user": user});
+                        req.user = user;
+                        next();
                     }
                 })
             }

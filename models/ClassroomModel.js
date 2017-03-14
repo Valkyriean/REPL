@@ -14,4 +14,4 @@ var Classroom = new Schema({
     programLanguage: String
 });
 
-module.exports = mongoose.model('Classroom', Classroom);
+module.exports = mongoose.model('Classrooms', Classrooms);
