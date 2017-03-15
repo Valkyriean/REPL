@@ -30,7 +30,7 @@ exports.sendEmail = function (req,res,next) {
             //     from: '1034743427@qq.com',
             //     to: req.body.email,
             //     subject: 'Change your REPL password',
-            //     text: "localhost:3000/" + token//only for testing
+            //     text: "localhost:3000/findPass/" + token//only for testing
             // };
             // transporter.sendMail(mailOption, function (err, response) {
             //     if(err) throw err;

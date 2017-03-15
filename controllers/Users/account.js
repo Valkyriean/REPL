@@ -1,5 +1,5 @@
 /**
- * Created by phant on 2017/2/27.
+ * Created by Li on 2017/2/27.
  */
 var User = require('../../models/UserModel');
 

@@ -10,7 +10,6 @@ exports.postDashboard = function(req,res,next){
         own:null,
         student:null
     };
-    console.log(req.user);
 
     if(req.user.type == "teacher"){
         Classrooms.findOne({'own': req.user.userID}, function(err, classroom) {
