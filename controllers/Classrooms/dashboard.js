@@ -1,13 +1,20 @@
 var Classrooms = require('../../models/ClassroomsModel');
 
 exports.postDashboard = function(req,res,next){
-    var data;
+    var data={
+        token:null,
+        isTeacher:false,
+        teacher:null,
+        own:null,
+        student:null
+
+    };
     if(req.token != null){
-        data.token = req.token;
+        data ={token:req.toekn};
     }
     
     if(req.user.teacher){
-        data.teacher = true;
+        data.isTeacher = true;
         
         Classrooms.findOne({'own': req.user.userID}, function(err, classroom) {
             if(err) throw err;
