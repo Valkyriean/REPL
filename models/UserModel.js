@@ -8,6 +8,7 @@ var IDcounter = require('./IDcounter').nextID('Users');
 var User = new Schema({
     userID: Number,
     email: String,
+    type: String,
     firstname: String,
     lastname: String,
     pass: { type: String, required: true }
