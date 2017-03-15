@@ -4,7 +4,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var Classroom = new Schema({
+var Classrooms = new Schema({
     classroomID: Number,
     owner: Number,
     teachers: Array,

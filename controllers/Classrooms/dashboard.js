@@ -1,4 +1,4 @@
-var Classrooms = require('../../models/ClassroomModel');
+var Classrooms = require('../../models/ClassroomsModel');
 
 exports.postDashboard = function(req,res,next){
     var data;
