@@ -14,10 +14,11 @@ exports.saveAccount = function(req,res){
     var newUser = new User(data);
     newUser.save(function(err) {
         if (err) {
-            res.json({"status": "failed", "message":"failed to save account"});
+            res.json({"status": 32});
+            //TODO 东东自己都不知道这个咋办
         }else{
             console.log('User saved successfully!');
-            res.json({"status": "success"});
+            res.json({"status": 30});
         }
     });
 };

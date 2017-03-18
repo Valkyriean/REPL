@@ -4,6 +4,7 @@ var secretKey = require('../../Strings').secretKey;
 
 exports.postDashboard = function(req,res,next){
     var data={
+        status: 20,
         token:jwt.sign({data: req.user.userID},secretKey, { expiresIn: '24h' }),
         type:req.user.type,
         teacher:null,
