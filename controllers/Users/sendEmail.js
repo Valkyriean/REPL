@@ -2,6 +2,8 @@
  * Created by 马鸣玉 on 2017/3/7.
  */
 const nodemailer = require('nodemailer');
+var jwt = require("jsonwebtoken");
+const secretKey = require('../../Strings').secretKey;
 
 var transporter = nodemailer.createTransport({
     service: 'qq',
@@ -20,6 +22,9 @@ exports.sendEmail = function (req,res,next) {
         }
         else {
             console.log(user);
+            var token = jwt.sign({
+                    data: user.email
+                }, secretKey, { expiresIn: '24h' });
             var mailOption = {
                 from: '1034743427@qq.com',
                 to: req.body.email,

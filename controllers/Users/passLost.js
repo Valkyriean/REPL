@@ -24,19 +24,19 @@ exports.sendEmail = function (req,res,next) {
             console.log(user);
             var token = jwt.sign({
                 data: user.email
-            }, secretKey, {expireIn:'24h'});
+            }, secretKey, {expiresIn:'24h'});
             console.log(token);
-            var mailOption = {
-                from: '1034743427@qq.com',
-                to: req.body.email,
-                subject: 'Change your REPL password',
-                text: token//only for testing
-            };
-            transporter.sendMail(mailOption, function (err, response) {
-                if(err) throw err;
-                console.log("success");
-            });
+            // var mailOption = {
+            //     from: '1034743427@qq.com',
+            //     to: req.body.email,
+            //     subject: 'Change your REPL password',
+            //     text: "localhost:3000/findPass/" + token//only for testing
+            // };
+            // transporter.sendMail(mailOption, function (err, response) {
+            //     if(err) throw err;
+            //     console.log("success");
+            // });
+            res.json({"status": "success"});
         }
     });
-
 };

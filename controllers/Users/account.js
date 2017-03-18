@@ -1,11 +1,12 @@
 /**
- * Created by phant on 2017/2/27.
+ * Created by Li on 2017/2/27.
  */
 var User = require('../../models/UserModel');
 
 exports.saveAccount = function(req,res){
     var data = {
         email: req.body.email,
+        type: req.body.type,
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         pass: req.encrypted
