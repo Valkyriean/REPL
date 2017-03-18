@@ -7,7 +7,12 @@
         <div ng-message="required" class="error">Please enter a proper email address.</div>
         <div ng-message="email" class="error">This field must be a valid email address.</div>
     </div>
-    <input name="email" type="text" ng-model="data.email" ng-required="true" email>
+    <input name="email" type="text" ng-model="data.email" ng-required="true" email/>
+
+    <div>
+        <input name="UserType" type="radio" value="student">Student
+        <input name="UserType" type="radio" value="teacher">Teacher
+    </div>
 
     <div>First Name: </div>
     <div ng-messages="SignForm.first.$error" role="alert">
