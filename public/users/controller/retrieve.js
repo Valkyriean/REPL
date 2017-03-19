@@ -20,5 +20,3 @@ app.controller('RetrCont', function($scope, $state, $http) {
     };
 
 });
-
-
