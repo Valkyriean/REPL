@@ -23,9 +23,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
     };
     var findpass = {
         name: 'findpass',
-        url: '/findpass',
+        url: '/findpass/:hash',
         controller: 'FindpassCont',
-        templateUrl: 'users/html/findpass.html'
+        templateUrl: 'users/html/findpass.html',
+        params : { state: null}
     };
     var classroom = {
         name: 'classroom',
