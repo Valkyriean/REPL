@@ -24,17 +24,24 @@ exports.saveAccount = function(req,res){
 };
 
 exports.updateAccount = function(req,res){
-    User.findOne({'email':req.body.email,'pass':req.encryptedOldPass},function (err,user) {
-        if(err) throw err;
-        if(user==null){
-            console.log("user is not found or wrong pass");
-            res.json({"status": "failed","message":"cant find user or wrong pld pass"});
+    jwt.verify(req.body.token, secretKey,function(err,decoded){
+        if(err){
+            res.json({"status": 23});
         }else{
-            user.pass = req.encryptedNewPass;
-            user.save();
-            res.json({"status": "success"});
+            User.findOne({'useID':decoded,'pass':req.encryptedOldPass},function (err,user) {
+                if(err) throw err;
+                if(user==null){
+                    console.log("user is not found or wrong pass");
+                    res.json({"status": "failed","message":"cant find user or wrong pld pass"});
+                }else{
+                    user.pass = req.encryptedNewPass;
+                    user.save();
+                    res.json({"status": "success"});
+                }
+            });
         }
     });
+        
 };
 
 exports.deleteAccount = function(req,res){

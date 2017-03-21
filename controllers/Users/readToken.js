@@ -15,8 +15,10 @@ exports.readToken = function(req,res,next){
                     if(err){
                         res.json({"status": 23});
                     }else{
-                        req.user = user;
-                        next();
+                        res.json({
+                            "status":20,
+                            "token":jwt.sign({data: req.user.userID},secretKey, { expiresIn: '24h' }),
+                        });
                     }
                 })
             }

@@ -1,5 +1,6 @@
 var User = require('../../models/UserModel');
-
+var jwt = require('jsonwebtoken');
+var secretKey = require('../../Strings').secretKey;
 
 exports.findUser = function(req, res, next) {
     User.findOne({'email': req.body.email}, function(err, user) {
@@ -9,8 +10,10 @@ exports.findUser = function(req, res, next) {
             res.json({"status": 21});
         }else {
             if(req.encrypted == user.pass) {
-                req.user = user;
-                next();
+                res.json({
+                    "status":20,
+                    "token":jwt.sign({data: req.user.userID},secretKey, { expiresIn: '24h' }),
+                });
             }
             else {
                 res.json({"status": 22});
