@@ -23,7 +23,7 @@ app.controller('SignCont', function($scope, $state, $http) {
                     alert("Sorry, validation failed. ");
                     break;
                 default:
-                    alert("Sorry, sign up failed for a unknown reason.\nerror code: " + res.data.status);
+                    alert("Unknown error, code: " + res.data.status);
             }
 
         });
