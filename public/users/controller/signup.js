@@ -3,27 +3,29 @@
  */
 var app = angular.module('REPL');
 app.controller('SignCont', function($scope, $state, $http) {
-    $scope.data = {
-        "email": "",
-        "firstname": "",
-        "lastname": "",
-        "pass": "",
-        "conf": ""
-    };
     $scope.goState = function(add) {
         $state.go(add);
     };
     $scope.confirm = function() {
+        console.log($scope.data);
         $http.post('/api/users/signup', $scope.data).then(function(res){
-            if(res.data.status == "success") {
-                window.location.href = "../../index.html";
-            } else {
-                if(res.data.message == "repeat email") {
-                    alert("Email address already exist.");
-                } else {
-                    alert("Sorry, sign up failed.")
-                }
+            switch(res.data.status) {
+                case 10:
+                    $state.go('login');
+                    break;
+                case 31:
+                    alert("Sorry, email already exist. ");
+                    break;
+                case 32:
+                    alert("Sorry, an error occurred in server, sign up failed. ");
+                    break;
+                case 33:
+                    alert("Sorry, validation failed. ");
+                    break;
+                default:
+                    alert("Sorry, sign up failed for a unknown reason.\nerror code: " + res.data.status);
             }
+
         });
     };
 });

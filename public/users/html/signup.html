@@ -10,8 +10,8 @@
     <input name="email" type="text" ng-model="data.email" ng-required="true" email/>
 
     <div>
-        <input name="UserType" type="radio" value="student">Student
-        <input name="UserType" type="radio" value="teacher">Teacher
+        <input name="UserType" type="radio" ng-model="data.teacher" ng-value=false >Student
+        <input name="UserType" type="radio" ng-model="data.teacher" ng-value=true>Teacher
     </div>
 
     <div>First Name: </div>

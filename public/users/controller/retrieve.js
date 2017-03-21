@@ -3,9 +3,6 @@
  */
 var app = angular.module('REPL');
 app.controller('RetrCont', function($scope, $state, $http) {
-    $scope.data = {
-        "email": ""
-    };
     $scope.goState = function(add) {
         $state.go(add);
     };
