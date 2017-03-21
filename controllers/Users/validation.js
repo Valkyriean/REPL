@@ -32,7 +32,7 @@ exports.SignUpvalidation = function(req,res,next){
             if(user==null){
                 next();
             }else{
-                res.json({"status":"failed","message":"repeat email"});
+                res.json({"status": 31});
                 console.log('repeat email');
             }
         });
@@ -40,7 +40,6 @@ exports.SignUpvalidation = function(req,res,next){
 };
 
 exports.passValidation = function(req,res,next){
-    console.log("at validation");
     if(!goodPassword(req.body.newPass)){
         res.json({"status": "failed","message":"bad password"});
     }else{

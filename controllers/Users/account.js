@@ -14,38 +14,39 @@ exports.saveAccount = function(req,res){
     var newUser = new User(data);
     newUser.save(function(err) {
         if (err) {
-            res.json({"status": "failed", "message":"failed to save account"});
+            res.json({"status": 32});
+            //TODO 东东自己都不知道这个咋办
         }else{
             console.log('User saved successfully!');
-            res.json({"status": "success"});
+            res.json({"status": 30});
         }
     });
 };
 
 exports.updateAccount = function(req,res){
-    User.findOne({'email':req.body.email,'pass':req.encryptedOldPass},function (err,user) {
+    User.findOne({'userID':req.decoded,'pass':req.encryptedOldPass},function (err,user) {
         if(err) throw err;
-        if(user==null){
-            console.log("user is not found or wrong pass");
-            res.json({"status": "failed","message":"cant find user or wrong pld pass"});
-        }else{
+        if(user){
             user.pass = req.encryptedNewPass;
             user.save();
             res.json({"status": "success"});
+        }else{
+            //null user or wrong pass
+            res.json({"status": "failed","message":"cant find user or wrong pld pass"});
         }
     });
 };
 
 exports.deleteAccount = function(req,res){
-    User.findOne({'email':req.body.email,'pass':req.encrypted},function (err,user) {
+    User.findOne({'userID':req.decoded,'pass':req.encrypted},function (err,user) {
         if(err) throw err;
-        if(user==null){
-            console.log("user is not found or wrong pass");
-            res.json({"status": "failed","message":"cant find user or wrong pld pass"});
+        if(user){
+	        user.remove();
+	        res.json({"status": "success"});
+	        console.log("delete success");
         }else{
-            user.remove();
-            res.json({"status": "success"});
-            console.log("delete success");
+	        console.log("user is not found or wrong pass");
+	        res.json({"status": "failed","message":"cant find user or wrong pld pass"});
         }
     });
 };
