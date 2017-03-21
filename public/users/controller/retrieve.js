@@ -3,12 +3,14 @@
  */
 var app = angular.module('REPL');
 app.controller('RetrCont', function($scope, $state, $http) {
-    $scope.data = {};
+    $scope.data = {
+        "email": ""
+    };
     $scope.goState = function(add) {
         $state.go(add);
     };
     $scope.confirm = function() {
-        $http.post('/api/users/sendEmail', $scope.data).then(function(res){
+        $http.post('/api/users/lostPass', $scope.data).then(function(res){
             if(res.status == "success") {
                 alert("The new password has been sent to your email.");
             } else if(res.status == "null") {
