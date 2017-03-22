@@ -1,7 +1,7 @@
 var app = angular.module('REPL');
 app.controller('FindpassCont', function($scope, $state, $http) {
     var url = window.location.href;
-    var token = url.substring(44);
+    var token = url.substring(34);
     $scope.data = {
         "lastname": "",
         "newpass": "",

@@ -23,7 +23,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     };
     var findpass = {
         name: 'findpass',
-        url: '/findpass/:hash',
+        url: '/findPass/:hash',
         controller: 'FindpassCont',
         templateUrl: 'users/html/findpass.html'
     };
