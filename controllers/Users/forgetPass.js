@@ -34,6 +34,7 @@ exports.lostPass = function (req,res,next) {
 	        //     console.log("success");
 	        // });
 	        res.json({"status": "success"});
+	        //TODO
         }else {
 	        console.log("user does not found");
 	        //we are not letting user know the email is not used.
@@ -53,8 +54,10 @@ exports.findPass = function(req,res,next){
 					user.pass = req.encrypted;
 					user.save();
 					res.json({"status": "success", "user": user});
+					//TODO
 				}else{
 					res.json({"status": "failed","message":"token not found"});
+					//TODO
 					console.log("wrong token/n"+user.email+"/n"+decoded.data)
 				}
 			})

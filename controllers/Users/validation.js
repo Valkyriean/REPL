@@ -21,7 +21,7 @@ var goodName = function(str){
 exports.SignUpvalidation = function(req,res,next){
     var a = !isEmail(req.body.email);
     var b = !goodPassword(req.body.pass);
-    var c = req.body.pass != req.body.conf;
+    var c = req.body.pass !== req.body.conf;
     var d = !goodName(req.body.firstname);
     var e = !goodName(req.body.lastname);
     if(a || b || c || d || e) {
@@ -29,11 +29,12 @@ exports.SignUpvalidation = function(req,res,next){
     }else{
         User.findOne({'email':req.body.email},function(err,user){
             if(err) throw err;
-            if(user==null){
-                next();
+            if(user){
+	            res.json({"status": 31});
+	            console.log('repeat email');
             }else{
-                res.json({"status": 31});
-                console.log('repeat email');
+	            next();
+
             }
         });
     }
@@ -42,6 +43,7 @@ exports.SignUpvalidation = function(req,res,next){
 exports.passValidation = function(req,res,next){
     if(!goodPassword(req.body.newPass)){
         res.json({"status": "failed","message":"bad password"});
+	    //TODO
     }else{
         next();
     }

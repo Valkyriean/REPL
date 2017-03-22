@@ -15,7 +15,7 @@ exports.saveAccount = function(req,res){
     newUser.save(function(err) {
         if (err) {
             res.json({"status": 32});
-            //TODO 东东自己都不知道这个咋办
+            //TODO 我自己编的这个
         }else{
             console.log('User saved successfully!');
             res.json({"status": 30});
@@ -30,9 +30,11 @@ exports.updateAccount = function(req,res){
             user.pass = req.encryptedNewPass;
             user.save();
             res.json({"status": "success"});
+            //TODO
         }else{
             //null user or wrong pass
             res.json({"status": "failed","message":"cant find user or wrong pld pass"});
+            //TODO
         }
     });
 };
@@ -43,10 +45,12 @@ exports.deleteAccount = function(req,res){
         if(user){
 	        user.remove();
 	        res.json({"status": "success"});
+	        //TODO
 	        console.log("delete success");
         }else{
 	        console.log("user is not found or wrong pass");
 	        res.json({"status": "failed","message":"cant find user or wrong pld pass"});
+	        //TODO
         }
     });
 };
