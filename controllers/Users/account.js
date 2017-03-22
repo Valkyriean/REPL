@@ -18,7 +18,7 @@ exports.saveAccount = function(req,res){
             //TODO 我自己编的这个
         }else{
             console.log('User saved successfully!');
-            res.json({"status": 30});
+            res.json({"status": 10});
         }
     });
 };
@@ -29,7 +29,7 @@ exports.updateAccount = function(req,res){
         if(user){
             user.pass = req.encryptedNewPass;
             user.save();
-            res.json({"status": "success"});
+            res.json({"status": 10});
             //TODO
         }else{
             //null user or wrong pass
@@ -44,7 +44,7 @@ exports.deleteAccount = function(req,res){
         if(err) throw err;
         if(user){
 	        user.remove();
-	        res.json({"status": "success"});
+	        res.json({"status": 10});
 	        //TODO
 	        console.log("delete success");
         }else{

@@ -33,7 +33,7 @@ exports.lostPass = function (req,res,next) {
 	            if(err) throw err;
 	            console.log("success");
 	        });
-	        res.json({"status": "success"});
+	        res.json({"status": 10});
 	        //TODO
         }else {
 	        console.log("user does not found");
@@ -45,7 +45,7 @@ exports.lostPass = function (req,res,next) {
 exports.findPass = function(req,res,next){
 	jwt.verify(req.body.token, secretKey,function(err,decoded){
 		if(err){
-			res.json({"status":"failed","message":"wrong or expired token"});
+			res.json({"status": 10});
 		}else{
 			//not change how it find decoded, its a special token made by email
 			User.findOne({'email':decoded.data}, function(err,user){
@@ -56,7 +56,7 @@ exports.findPass = function(req,res,next){
 					res.json({"status": "success", "user": user});
 					//TODO
 				}else{
-					res.json({"status": "failed","message":"token not found"});
+					res.json({"status": 51});
 					//TODO
 					console.log("wrong token/n"+user.email+"/n"+decoded.data)
 				}

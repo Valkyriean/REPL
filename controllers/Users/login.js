@@ -8,7 +8,7 @@ exports.passLogin = function(req, res) {
         if(user) {
 	        if(req.encrypted === user.pass) {
 		        res.json({
-			        "status":20,
+			        "status":10,
 			        "token":jwt.sign({data: user.userID},secretKey),
 			        "loginToken":jwt.sign({data: user.userID},secretKey, { expiresIn: '24h' })
 		        });
@@ -29,7 +29,7 @@ exports.tokenLogin = function(req, res) {
 		if(err) throw err;
 		if(user){
 			res.json({
-				"status":20,
+				"status":10,
 				"token":jwt.sign({data: user.userID},secretKey),
                 "loginToken":jwt.sign({data: user.userID},secretKey, { expiresIn: '24h' })
 			});

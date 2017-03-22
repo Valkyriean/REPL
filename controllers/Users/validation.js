@@ -42,7 +42,7 @@ exports.SignUpvalidation = function(req,res,next){
 
 exports.passValidation = function(req,res,next){
     if(!goodPassword(req.body.newPass)){
-        res.json({"status": "failed","message":"bad password"});
+        res.json({"status": 33});
 	    //TODO
     }else{
         next();
