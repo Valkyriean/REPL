@@ -11,13 +11,13 @@ app.controller('FindpassCont', function($scope, $state, $http) {
         $state.go(add);
     };
     $scope.confirm = function() {
-        alert(token);
         $http.post('/api/users/findPass', $scope.data).then(function(res) {
             console.log(res);
             if(res.data.status == "failed") {
-                alert("failed to change.");
+                alert("Failed to change.");
             }
             if(res.data.status == "success") {
+                alert("Change successfully.");
                 $state.go('classroom');
                 $cookieStore.put("WatchCatLoginToken", res.data.token);
             } else {
