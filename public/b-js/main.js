@@ -7,31 +7,31 @@ app.config(function($stateProvider, $urlRouterProvider) {
         name: 'login',
         url: '/login',
         controller: 'LoginCont',
-        templateUrl: 'users/html/login.html'
+        templateUrl: 'users/login/login.html'
     };
     var signup = {
         name: 'signup',
         url: '/signup',
         controller: 'SignCont',
-        templateUrl: 'users/html/signUp.html'
+        templateUrl: 'users/signup/signup.html'
     };
     var retrieve = {
         name: 'retrieve',
         url: '/retrieve',
         controller: 'RetrCont',
-        templateUrl: 'users/html/retrieve.html'
+        templateUrl: 'users/retrieve/retrieve.html'
     };
     var findpass = {
         name: 'findpass',
         url: '/findpass/:hash',
         controller: 'FindpassCont',
-        templateUrl: 'users/html/findpass.html'
+        templateUrl: 'users/retrieve/findpass.html'
     };
     var classroom = {
         name: 'classroom',
         url: '/classroom',
         controller: 'ClassroomCont',
-        templateUrl: 'classes/html/classroom.html'
+        templateUrl: 'classes/classroom/classroom.html'
     };
     $stateProvider.state(login);
     $stateProvider.state(signup);
