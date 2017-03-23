@@ -85,7 +85,7 @@ angular.module('REPL').directive('loaded', ['$cookieStore', '$http', '$state', f
             var token = {
                 "token": $cookieStore.get("WatchCatLoginToken")
             };
-            $http.post('/api/users/token', token).then(function(res) {
+            $http.post('/api/users/tokenLogin', token).then(function(res) {
                 console.log($scope.src);
                 if(res.data.status == "success") {
                     $state.go($scope.src);

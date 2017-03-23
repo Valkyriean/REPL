@@ -10,7 +10,7 @@ app.controller('LoginCont', function($cookieStore, $scope, $state, $http) {
         $state.go(add);
     };
     $scope.confirm = function() {
-        $http.post('/api/users/login', $scope.data).then(function(res) {
+        $http.post('/api/users/passLogin', $scope.data).then(function(res) {
             console.log(res);
             switch(res.data.status) {
                 case 10:
