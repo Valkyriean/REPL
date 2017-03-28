@@ -4,7 +4,7 @@ var secretKey = require('../../Strings').secretKey;
 
 exports.postDashboard = function(req,res){
     var data={
-        status: 20,
+        status: 1,
         type:req.user.type,
         teacher:null,
         own:null,

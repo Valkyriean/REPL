@@ -14,11 +14,10 @@ exports.saveAccount = function(req,res){
     var newUser = new User(data);
     newUser.save(function(err) {
         if (err) {
-            res.json({"status": 32});
-            //TODO 我自己编的这个
+            res.json({"status": 131});
         }else{
             console.log('User saved successfully!');
-            res.json({"status": 10});
+            res.json({"status": 1});
         }
     });
 };
@@ -29,12 +28,10 @@ exports.updateAccount = function(req,res){
         if(user){
             user.pass = req.encryptedNewPass;
             user.save();
-            res.json({"status": 10});
-            //TODO
+            res.json({"status": 1});
         }else{
             //null user or wrong pass
-            res.json({"status": "failed","message":"cant find user or wrong pld pass"});
-            //TODO
+            res.json({"status": 132});
         }
     });
 };
@@ -44,13 +41,11 @@ exports.deleteAccount = function(req,res){
         if(err) throw err;
         if(user){
 	        user.remove();
-	        res.json({"status": 10});
-	        //TODO
+	        res.json({"status": 1});
 	        console.log("delete success");
         }else{
 	        console.log("user is not found or wrong pass");
-	        res.json({"status": "failed","message":"cant find user or wrong pld pass"});
-	        //TODO
+	        res.json({"status": 133});
         }
     });
 };

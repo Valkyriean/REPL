@@ -25,12 +25,12 @@ exports.SignUpvalidation = function(req,res,next){
     var d = !goodName(req.body.firstname);
     var e = !goodName(req.body.lastname);
     if(a || b || c || d || e) {
-        res.json({"status": "failed","message":"validation failed"});
+        res.json({"status": 121});
     }else{
         User.findOne({'email':req.body.email},function(err,user){
             if(err) throw err;
             if(user){
-	            res.json({"status": 31});
+	            res.json({"status": 122});
 	            console.log('repeat email');
             }else{
 	            next();
@@ -42,8 +42,7 @@ exports.SignUpvalidation = function(req,res,next){
 
 exports.passValidation = function(req,res,next){
     if(!goodPassword(req.body.newPass)){
-        res.json({"status": 33});
-	    //TODO
+        res.json({"status": 123});
     }else{
         next();
     }
