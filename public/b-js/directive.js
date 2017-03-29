@@ -8,10 +8,11 @@ angular.module('REPL').directive('email', function() {
         restrict: 'A',
         link: function(scope, elem, attr, ctrl) {
             ctrl.$validators.email = function(value) {
-                if(filter.test(value)) {
-                    return true;
-                }
-                return false;
+	            return filter.test(value);
+                // if(filter.test(value)) {
+                //     return true;
+                // }
+                // return false;
             };
         }
     }
@@ -23,10 +24,11 @@ angular.module('REPL').directive('first', function() {
         restrict: 'A',
         link: function(scope, elem, attr, ctrl) {
             ctrl.$validators.first = function(value) {
-                if(filter.test(value)) {
-                    return true;
-                }
-                return false;
+	            return filter.test(value);
+                // if(filter.test(value)) {
+                //     return true;
+                // }
+                // return false;
             };
         }
     }
@@ -38,10 +40,11 @@ angular.module('REPL').directive('last', function() {
         restrict: 'A',
         link: function(scope, elem, attr, ctrl) {
             ctrl.$validators.last = function(value) {
-                if(filter.test(value)) {
-                    return true;
-                }
-                return false;
+	            return filter.test(value);
+                // if(filter.test(value)) {
+                //     return true;
+                // }
+                // return false;
             };
         }
     }
@@ -53,10 +56,11 @@ angular.module('REPL').directive('pass', function() {
         restrict: 'A',
         link: function(scope, elem, attr, ctrl) {
             ctrl.$validators.pass = function(value) {
-                if(filter.test(value)) {
-                    return true;
-                }
-                return false;
+                return filter.test(value);
+                // if(filter.test(value)) {
+                //     return true;
+                // }
+                // return false;
             };
         }
     }
@@ -67,10 +71,11 @@ angular.module('REPL').directive('conf', function() {
         restrict: 'A',
         link: function(scope, elem, attr, ctrl) {
             ctrl.$validators.conf = function(value) {
-                if(value == scope.data.pass) {
-                    return true;
-                }
-                return false;
+                return (value === scope.data.pass);
+                // if(value === scope.data.pass) {
+                //     return true;
+                // }
+                // return false;
             };
         }
     }
@@ -87,7 +92,7 @@ angular.module('REPL').directive('loaded', ['$cookieStore', '$http', '$state', f
             };
             $http.post('/api/users/tokenLogin', token).then(function(res) {
                 console.log($scope.src);
-                if(res.data.status == "success") {
+                if(res.data.status === 1) {
                     $state.go($scope.src);
                 }
             });

@@ -35,6 +35,7 @@ exports.lostPass = function (req,res,next) {
 	        });
 	        res.json({"status": 1});
         }else {
+	        res.json({"status": 1});
 	        console.log("user does not found");
 	        //we are not letting user know the email is not used.
         }
