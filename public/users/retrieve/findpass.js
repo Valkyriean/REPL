@@ -25,6 +25,8 @@ app.controller('FindpassCont', function($scope, $state, $http) {
                 case 152:
                     alert("Account not exist");
                     break;
+                default:
+                    alert("Unknown error, code: " + res.data.status);
             }
         });
     };
