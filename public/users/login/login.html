@@ -1,22 +1,33 @@
 <form ng-controller="LoginCont" name="LoginForm" novalidate>
 
-    <div>Sign in</div>
-
-    <div ng-messages="LoginForm.email.$error" role="alert">
-        <div ng-message="required" class="error">Please enter a value for this field.</div>
-        <div ng-message="email" class="error">Please enter a proper email address.</div>
+    <div class="topbar">
+        <img src="../../files/logo.png" width="30px" height="30px" class="topbar-left"/>
+        <!--<input class="topbar-right" type="button" value="Sign Out"/>-->
     </div>
-    <input name="email" type="text" placeholder="Email address" ng-model="data.email" ng-required="true" email/>
 
-    <div ng-messages="LoginForm.pass.$error" role="alert">
-        <div ng-message="required" class="error">Please enter a value for this field.</div>
-        <div ng-message="pass" class="error">Password has to be more than six characters.</div>
+    <div class="user">
+
+        <h1 class="title">Sign In</h1>
+
+        <div ng-if="LoginForm.email.$touched" ng-messages="LoginForm.email.$error" role="alert">
+            <div ng-message="required" class="error">Please enter a value for this field.</div>
+            <div ng-message="email" class="error">Please enter a proper email address.</div>
+        </div>
+        <input class="input" name="email" type="text" placeholder="Email address" ng-model="data.email" ng-required="true" email/>
+
+        <div ng-if="LoginForm.pass.$touched" ng-messages="LoginForm.pass.$error" role="alert">
+            <div ng-message="required" class="error">Please enter a value for this field.</div>
+            <div ng-message="pass" class="error">Password has to be more than six characters.</div>
+        </div>
+        <input class="input" name="pass" type="password" placeholder="Password" ng-model="data.pass" ng-required="true" pass/>
+
+        <input class="button" type="button" ng-click="confirm()" ng-disabled="!(LoginForm.$valid)" value="Login"/>
+        <div class="text">
+            <input class="content" type="button" ng-click="goState('signup')" value="Don't have a account?"/>
+            <input class="content" type="button" ng-click="goState('retrieve')" value="Lost your password?"/>
+        </div>
+
     </div>
-    <input name="pass" type="password" placeholder="Password" ng-model="data.pass" ng-required="true" pass/>
-
-    <input type="button" ng-click="confirm()" ng-disabled="!(LoginForm.$valid)" value="Login"/>
-    <input type="button" ng-click="goState('signup')" value="Don't have a account?"/>
-    <input type="button" ng-click="goState('retrieve')" value="Lost your password?"/>
 
     <loaded src="'classroom'"></loaded>
 

@@ -1,122 +1,79 @@
-.loginForm{
-    background: #D0D0D0;
-    width: 600px;
+.page {
+    margin: 0px;
+    background-color: white;
+}
+.topbar {
+    height: 30px;
+    padding: 5px 10px;
+    background-color: #dddddd;
+    box-shadow: 0px 1px 1px #999999;
+    /*border-bottom-width: 1px;*/
+    /*border-bottom-style: solid;*/
+    /*border-bottom-color: #999999;*/
+}
+.topbar-left {
+    border: 0px;
+    height: 30px;
+    padding: 0px;
+    margin: 0px 10px 0px 0px;
+}
+.topbar-right {
+    border: 0px;
+    height: 30px;
+    float: right;
+    padding: auto 5px;
+    background-color: white;
+    margin: 0px 0px 0px 10px;
+}
+.user {
+    width: 40%;
+    margin: 10% auto 0px;
+    box-shadow: 0px 0px 1px 1px #bbbbbb;
+}
+.user .title {
+    text-align: center;
+    margin: 0px;
+    padding: 3% 0px 5%;
+}
+.user .input {
+    width: 78%;
     height: auto;
-    margin: auto;
-    margin-top: 150px;
-    text-align:center;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
-.loginForm input{
-    margin-top: 20px;
-    width: 60%;
-    height: 25px;
-}
-
-.loginblock1{
-    background: #D0D0D0;
-    width: 600px;
-    height: 20px;
-    text-align:center;
-    margin:0 auto;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-
-#EnterPassword{
-    color: gray;
+    display: block;
     font-size: 20px;
+    padding: 1%;
+    margin: 0px auto 3%;
 }
-
-#EnterText {
-    color: gray;
-    font-size: 20px;
+.user .error {
+    width: 80%;
+    color: red;
+    display: block;
+    font-size: 15px;
+    margin: 0px auto;
 }
-
-.loginbut{
-    background: teal;
+.user .button {
+    width: 80%;
+    border: 2px;
+    margin: 0px auto 3%;
+    padding: 0px;
     color: white;
-    width: 140px;
-    height: 30px;
-    text-align:center;
-    margin:10px 20px;
-    font-size: 20px;
-    border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
-    border-bottom-left-radius: 7px;
-    border-bottom-right-radius: 7px;
-}
-
-.loginlyp{
-    color: gray;
-    width: 190px;
-    height: 30px;
-    text-align:center;
-    margin:10px auto 50px;
-}
-
-.input-container{
-    margin: 5px 0px;
-}
-
-.error{
-    margin-top: 1px;
-    color:red;
-}
-
-.SignupForm{
-    background: #D0D0D0;
-    width: 500px;
     height: auto;
+    display: block;
+    font-size: 20px;
+    border-style: solid;
+    border-color: black;
+    background-color: black;
+}
+.user .text {
+    width: 80%;
+    display: block;
+    margin: 0px auto;
+}
+.user .text .content {
+    border: 0px;
+    width: 49%;
     margin: auto;
-    margin-top: 80px;
-    text-align:center;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
-.SignupForm input{
-    width: 60%;
-    height: 25px;
-}
-
-.signup{
-    color: gray;
-    text-align:center;
-    font-size: 30px;
-    line-height: 100px;
-}
-
-.signuptext{
-    text-align:left;
-    margin-top: 20px;
-    font-size: 20px;
-    margin-left: 100px;
-}
-
-.signupbox{
-    text-align:left;
-    width:300px;
-    line-height: 15px;
-    background: white;
-    font-size: 20px;
-}
-
-.signupbut{
-    background: teal;
-    color: white;
-    width: 100px;
-    height: 30px;
-    margin: 30px auto 60px;
-    font-size: 20px;
-    border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
-    border-bottom-left-radius: 7px;
-    border-bottom-right-radius: 7px;
+    padding: 0px;
+    font-size: 15px;
+    text-align: center;
+    background-color: white;
 }
