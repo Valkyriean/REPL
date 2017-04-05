@@ -8,10 +8,8 @@ app.controller('RetrCont', function($scope, $state, $http) {
     };
     $scope.confirm = function() {
         $http.post('/api/users/lostPass', $scope.data).then(function(res){
-            if(res.data.status == "success") {
+            if(res.data.status === 1) {
                 alert("Check the email to change your password.");
-            } else if(res.data.status == "null") {
-                alert("The email has not been registered yet.")
             } else {
                 alert("Sorry, retrieve failed.");
             }

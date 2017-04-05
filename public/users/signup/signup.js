@@ -10,16 +10,16 @@ app.controller('SignCont', function($scope, $state, $http) {
         console.log($scope.data);
         $http.post('/api/users/signup', $scope.data).then(function(res){
             switch(res.data.status) {
-                case 10:
+                case 1:
                     $state.go('login');
                     break;
-                case 31:
+                case 122:
                     alert("Sorry, email already exist. ");
                     break;
-                case 32:
+                case 131:
                     alert("Sorry, an error occurred in server, sign up failed. ");
                     break;
-                case 33:
+                case 121:
                     alert("Sorry, validation failed. ");
                     break;
                 default:
