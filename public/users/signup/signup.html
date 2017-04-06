@@ -1,48 +1,53 @@
 <form name="SignForm" novalidate>
 
-    <div>Sign up</div>
-
-    <div>E-mail Address: </div>
-    <div ng-messages="SignForm.email.$error" role="alert">
-        <div ng-message="required" class="error">Please enter a proper email address.</div>
-        <div ng-message="email" class="error">This field must be a valid email address.</div>
-    </div>
-    <input name="email" type="text" ng-model="data.email" ng-required="true" email/>
-
-    <div>
-        <input name="UserType" type="radio" ng-model="data.teacher" ng-value=false >Student
-        <input name="UserType" type="radio" ng-model="data.teacher" ng-value=true>Teacher
+    <div class="topbar">
+        <img src="../../files/logo.png" width="30px" height="30px" class="topbar-left"/>
+        <!--<input class="topbar-right" type="button" value="Sign Out"/>-->
     </div>
 
-    <div>First Name: </div>
-    <div ng-messages="SignForm.first.$error" role="alert">
-        <div ng-message="required" class="error">Please enter a value for this field.</div>
-        <div ng-message="first" class="error">This field must be a valid name.</div>
+    <div class="user">
+        <h1 class="title">Sign Up</h1>
+        <div ng-if="SignForm.email.$touched" ng-messages="SignForm.email.$error" role="alert">
+            <div ng-message="required" class="error">Please enter a proper email address.</div>
+            <div ng-message="email" class="error">This field must be a valid email address.</div>
+        </div>
+        <input name="email" type="text" placeholder="Email Address" ng-model="data.email" ng-required="true" email/>
+
+        <div>
+            <input name="UserType" type="radio" ng-model="data.teacher" ng-value=false >Student
+            <input name="UserType" type="radio" ng-model="data.teacher" ng-value=true>Teacher
+        </div>
+
+        <div>First Name: </div>
+        <div ng-if="SignForm.first.$touched" ng-messages="SignForm.first.$error" role="alert">
+            <div ng-message="required" class="error">Please enter a value for this field.</div>
+            <div ng-message="first" class="error">This field must be a valid name.</div>
+        </div>
+        <input name="first" type="text" placeholder="First Name" ng-model="data.firstname" ng-required="true" first/>
+
+        <div>Last Name: </div>
+        <div ng-if="SignForm.last.$touched" ng-messages="SignForm.last.$error" role="alert">
+            <div ng-message="required" class="error">Please enter a value for this field.</div>
+            <div ng-message="last" class="error">This field must be a valid name.</div>
+        </div>
+        <input name="last" type="text" placeholder="Last Name" ng-model="data.lastname" ng-required="true" last/>
+
+        <div>Password: </div>
+        <div ng-if="SignForm.pass.$touched" ng-messages="SignForm.pass.$error" role="alert">
+            <div ng-message="required" class="error">Please enter a value for this field.</div>
+            <div ng-message="pass" class="error">Password has to be more than six characters.</div>
+        </div>
+        <input name="pass" type="password" placeholder="Password" ng-model="data.pass" ng-required="true" pass/>
+
+        <div>Verify Password: </div>
+        <div ng-if="SignForm.conf.$touched" ng-messages="SignForm.conf.$error" role="alert">
+            <div ng-message="required" class="error">Please enter a value for this field.</div>
+            <div ng-message="conf" class="error">The two passwords are not same.</div>
+        </div>
+        <input name="conf" type="password" placeholder="Password Confirm" ng-model="data.conf" ng-required="true" conf/>
+
+        <input type="button" ng-click="confirm()" ng-disabled="!(SignForm.$valid)" value="Confirm"/>
+        <input type="button" ng-click="goState('login')" value="Already have a account?"/>
+
     </div>
-    <input name="first" type="text" ng-model="data.firstname" ng-required="true" first/>
-
-    <div>Last Name: </div>
-    <div ng-messages="SignForm.last.$error" role="alert">
-        <div ng-message="required" class="error">Please enter a value for this field.</div>
-        <div ng-message="last" class="error">This field must be a valid name.</div>
-    </div>
-    <input name="last" type="text" ng-model="data.lastname" ng-required="true" last/>
-
-    <div>Password: </div>
-    <div ng-messages="SignForm.pass.$error" role="alert">
-        <div ng-message="required" class="error">Please enter a value for this field.</div>
-        <div ng-message="pass" class="error">Password has to be more than six characters.</div>
-    </div>
-    <input name="pass" type="password" ng-model="data.pass" ng-required="true" pass/>
-
-    <div>Verify Password: </div>
-    <div ng-messages="SignForm.conf.$error" role="alert">
-        <div ng-message="required" class="error">Please enter a value for this field.</div>
-        <div ng-message="conf" class="error">The two passwords are not same.</div>
-    </div>
-    <input name="conf" type="password" ng-model="data.conf" ng-required="true" conf/>
-
-    <input type="button" ng-click="confirm()" ng-disabled="!(SignForm.$valid)" value="Confirm"/>
-    <input type="button" ng-click="goState('login')" value="Already have a account?"/>
-
 </form>
