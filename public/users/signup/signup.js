@@ -3,6 +3,9 @@
  */
 var app = angular.module('REPL');
 app.controller('SignCont', function($scope, $state, $http) {
+    $scope.data = {
+        "teacher": false
+    };
     $scope.goState = function(add) {
         $state.go(add);
     };
@@ -27,5 +30,8 @@ app.controller('SignCont', function($scope, $state, $http) {
             }
 
         });
+    };
+    $scope.switch = function() {
+        $scope.data.teacher = !($scope.data.teacher);
     };
 });

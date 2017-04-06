@@ -41,6 +41,7 @@
     margin: 0px auto 3%;
 }
 .user .error {
+    padding: 0px;
     width: 80%;
     color: red;
     display: block;
@@ -74,4 +75,60 @@
     font-size: 15px;
     text-align: center;
     background-color: white;
+}
+.user #teacher {
+    width: 100%;
+    height: auto;
+    padding: 0px 0px 0px 10%;
+    font-size: 20px;
+    min-height: 10px;
+    margin: auto;
+}
+.user .me {
+    width: 15%;
+    float: left;
+    margin: 0px;
+    height: auto;
+}
+.user .selection {
+    width: 25%;
+    float: left;
+    height: auto;
+    margin: 0px 0px 3% 7.5%;
+    background-color: #eeeeee;
+}
+.user #name {
+    min-height: 10px;
+    width: 80%;
+    height: auto;
+    margin: 0px auto 3%;
+    padding: 0px;
+}
+.user #name td {
+    min-height: 10px;
+    width: 50%;
+    padding: 0px;
+    margin: 0px;
+}
+.user #name input {
+    min-height: 10px;
+    width: 92%;
+    font-size: 20px;
+    padding: 2%;
+    margin: 0px;
+}
+.user #name .error1 {
+    width: 100%;
+}
+.user #name .error2 {
+    padding-left: 6%;
+    width: 100%;
+}
+.user .shiftL {
+    transform: translate(-4px, 0px);
+    float: left;
+}
+.user .shiftR {
+    transform: translate(4px, 0px);
+    float: right;
 }

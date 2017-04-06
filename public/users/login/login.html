@@ -1,8 +1,8 @@
 <form ng-controller="LoginCont" name="LoginForm" novalidate>
 
     <div class="topbar">
-        <img src="../../files/logo.png" width="30px" height="30px" class="topbar-left"/>
-        <!--<input class="topbar-right" type="button" value="Sign Out"/>-->
+        <img src="../../files/logo.png" width="30px" height="30px" class="topbar-left" />
+        <!--<input class="topbar-right" type="button" value="Sign Out" />-->
     </div>
 
     <div class="user">
@@ -21,10 +21,10 @@
         </div>
         <input class="input" name="pass" type="password" placeholder="Password" ng-model="data.pass" ng-required="true" pass/>
 
-        <input class="button" type="button" ng-click="confirm()" ng-disabled="!(LoginForm.$valid)" value="Login"/>
+        <input class="button" type="button" ng-click="confirm()" ng-disabled="!(LoginForm.$valid)" value="Login" />
         <div class="text">
-            <input class="content" type="button" ng-click="goState('signup')" value="Don't have a account?"/>
-            <input class="content" type="button" ng-click="goState('retrieve')" value="Lost your password?"/>
+            <input class="content" type="button" ng-click="goState('signup')" value="Don't have a account?" />
+            <input class="content" type="button" ng-click="goState('retrieve')" value="Lost your password?" />
         </div>
 
     </div>
