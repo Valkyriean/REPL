@@ -67,7 +67,7 @@ angular.module('REPL').directive('conf', function() {
         restrict: 'A',
         link: function(scope, elem, attr, ctrl) {
             ctrl.$validators.conf = function(value) {
-                if(value == scope.data.pass) {
+                if(value === scope.data.pass) {
                     return true;
                 }
                 return false;

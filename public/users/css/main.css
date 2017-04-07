@@ -91,11 +91,11 @@
     height: auto;
 }
 .user .selection {
-    width: 25%;
+    width: 20%;
     float: left;
     height: auto;
     margin: 0px 0px 3% 7.5%;
-    background-color: #eeeeee;
+    background-color: #ffffff;
 }
 .user #name {
     min-height: 10px;
