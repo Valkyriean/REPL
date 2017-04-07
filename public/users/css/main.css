@@ -124,11 +124,11 @@
     padding-left: 6%;
     width: 100%;
 }
-.user .shiftL {
+.user #shiftL {
     transform: translate(-4px, 0px);
     float: left;
 }
-.user .shiftR {
+.user #shiftR {
     transform: translate(4px, 0px);
     float: right;
 }
