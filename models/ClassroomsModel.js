@@ -13,7 +13,10 @@ var Classrooms = new Schema({
     students: Array,
     name: String,
     description: String,
-    programLanguage: String
+    programLanguage: String,
+    joinCode: String,
+    allowToEnter: {type: Boolean, default: true },
+    allowToLeave: {type: Boolean, default: true }
 });
 
 Classrooms.pre('save', function(next,done) {
