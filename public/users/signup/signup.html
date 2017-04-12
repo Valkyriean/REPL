@@ -6,15 +6,16 @@
     </div>
 
     <div class="user">
+
         <h1 class="title">Sign Up</h1>
 
         <div id="teacher">
             <p class="me">I'm a:</p>
-            <div class="selection" ng-click="switch()">
+            <div class="selection" ng-click="setStudent()">
                 <input name="UserType" type="radio" ng-model="data.teacher" ng-value=false />
                 Student
             </div>
-            <div class="selection" ng-click="switch()">
+            <div class="selection" ng-click="setTeacher()">
                 <input name="UserType" type="radio" ng-model="data.teacher" ng-value=true />
                 Teacher
             </div>
@@ -42,8 +43,8 @@
                 </td>
             </tr>
             <tr>
-                <td><input class="shiftL" name="first" type="text" placeholder="First Name" ng-model="data.firstname" ng-required="true" first/></td>
-                <td><input class="shiftR" name="last" type="text" placeholder="Last Name" ng-model="data.lastname" ng-required="true" last/></td>
+                <td><input id="shiftL" name="first" type="text" placeholder="First Name" ng-model="data.firstname" ng-required="true" first/></td>
+                <td><input id="shiftR" name="last" type="text" placeholder="Last Name" ng-model="data.lastname" ng-required="true" last/></td>
             </tr>
         </table>
 
@@ -53,14 +54,18 @@
         </div>
         <input class="input" name="pass" type="password" placeholder="Password" ng-model="data.pass" ng-required="true" pass/>
 
-        <div ng-if="SignForm.conf.$touched" ng-messages="SignForm.conf.$error" role="alert">
+        <div ng-if="SignForm.conf.$touched && SignForm.pass.$valid" ng-messages="SignForm.conf.$error" role="alert">
             <div ng-message="required" class="error">Please enter a value for this field.</div>
             <div ng-message="conf" class="error">The two passwords are not same.</div>
         </div>
         <input class="input" name="conf" type="password" placeholder="Password Confirm" ng-model="data.conf" ng-required="true" conf/>
 
-        <input type="button" ng-click="confirm()" ng-disabled="!(SignForm.$valid)" value="Confirm" />
-        <input type="button" ng-click="goState('login')" value="Already have a account?" />
+        <input class="button" type="button" ng-click="confirm()" ng-disabled="!(SignForm.$valid)" value="Confirm" />
+        <div class="text">
+            <input class="content" type="button" ng-click="goState('login')" value="Already have an account?" />
+            <input class="content" type="button" ng-click="goState('retrieve')" value="Lost your password?" />
+        </div>
 
     </div>
+
 </form>

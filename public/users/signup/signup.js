@@ -31,7 +31,10 @@ app.controller('SignCont', function($scope, $state, $http) {
 
         });
     };
-    $scope.switch = function() {
-        $scope.data.teacher = !($scope.data.teacher);
+    $scope.setStudent = function() {
+        $scope.data.teacher = false;
+    };
+    $scope.setTeacher = function() {
+        $scope.data.teacher = true;
     };
 });
