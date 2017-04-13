@@ -33,10 +33,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
         controller: 'ClassroomCont',
         templateUrl: 'classes/classroom/classroom.html'
     };
+    var createclassroom = {
+        name: 'createclassroom',
+        url: '/createclassroom',
+        controller: 'NewClassroomCont',
+        templateUrl: 'classes/classroom/newclassroom.html'
+    };
     $stateProvider.state(login);
     $stateProvider.state(signup);
     $stateProvider.state(retrieve);
     $stateProvider.state(findpass);
     $stateProvider.state(classroom);
+    $stateProvider.state(createclassroom);
     $urlRouterProvider.otherwise('/login');
 });
