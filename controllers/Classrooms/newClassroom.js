@@ -9,7 +9,7 @@ var generateJoinCode = function() {
         joinCode += a[randNumber];
     }
     return joinCode;
-}
+};
 
 exports.newClassroom = function(req, res) {
     var joinCode = generateJoinCode();
@@ -42,4 +42,4 @@ exports.newClassroom = function(req, res) {
             res.json({"status": 1});
         }
     });
-}
+};
