@@ -17,5 +17,7 @@ exports.updateClassroomSetting = function(req,res) {
             res.json({"status": "请求的classroom不存在"});
         }
     });
-}
+};
+
+
 

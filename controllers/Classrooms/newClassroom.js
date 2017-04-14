@@ -9,13 +9,13 @@ var generateJoinCode = function() {
         joinCode += a[randNumber];
     }
     return joinCode;
-}
+};
 
 exports.newClassroom = function(req, res) {
     var joinCode = generateJoinCode();
     var condition = true;
     while(condition) {
-        Classrooms.findOne({'joincode':joinCode},function(err,classroom){
+        Classrooms.findOne({'joinCode':joinCode},function(err,classroom){
             if(err) throw err;
             if(classroom){
                 joinCode = generateJoinCode();
@@ -31,7 +31,7 @@ exports.newClassroom = function(req, res) {
         name: req.body.name,
         description: req.body.description,
         programLanguage: req.body.programLanguage,
-        joincode: joinCode
+        joinCode: joinCode
     };
     var newClassroom = new Classrooms(data);
     newClassroom.save(function(err) {
@@ -42,4 +42,4 @@ exports.newClassroom = function(req, res) {
             res.json({"status": 1});
         }
     });
-}
+};
