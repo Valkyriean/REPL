@@ -44,18 +44,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
         controller: 'NewClassroomCont',
         templateUrl: 'classes/classroom/newclassroom.html'
     });
-    // Exception
-    var createclassroom = {
-        name: 'createclassroom',
+    $stateProvider.state('classroom.creat', {
         url: '/createclassroom',
         controller: 'NewClassroomCont',
         templateUrl: 'classes/classroom/newclassroom.html'
-    };
-    $stateProvider.state(login);
-    $stateProvider.state(signup);
-    $stateProvider.state(retrieve);
-    $stateProvider.state(findpass);
-    $stateProvider.state(classroom);
-    $stateProvider.state(createclassroom);
+    });
+    // Exception
     $urlRouterProvider.otherwise('/login');
 });
