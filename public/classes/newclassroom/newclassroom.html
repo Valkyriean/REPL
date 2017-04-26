@@ -1,0 +1,40 @@
+<form ng-controller="NewClassroomCont" name="NewClassroomForm" novalidate>
+
+    <div class="topbar">
+        <img src="../../files/logo.png" width="30px" height="30px" class="topbar-left" />
+        <!--<input class="topbar-right" type="button" value="Sign Out" />-->
+    </div>
+
+    <div class="newclassroom">
+
+        <h1 class="title">Classroom</h1>
+
+        <h2 class="subtitle">New Classroom</h2>
+
+        <div class="text">Language
+            <select class="selection" placeholder="Language" ng-model="data.language">
+                <option value="1">Java</option>
+                <option value="2">Python</option>
+                <option value="3">HTML,CSS,JS</option>
+                <option value="4">C++</option>
+                <option value="5">WatchCat</option>
+            </select>
+         </div>
+
+        <div class="text">Classroom Name
+            <input class="input" name="name" type="text" placeholder="Classroom Name" ng-model="data.crname" ng-required="true">
+            <div ng-if="NewClassroomForm.name.$touched" ng-messages="NewClassroomForm.name.$error" role="alert">
+                <div ng-message="required" class="error">Please enter a value for this field.</div>
+            </div>
+        </div>
+
+        <div class="text">Description
+            <input class="input" name="description" type="text" placeholder="Description" ng-model="data.description" ng-required="true">
+        </div>
+
+        <input class="button" type="button" ng-click="confirm()" ng-disabled="!(NewClassroomForm.$valid)" value="Create" />
+    </div>
+
+    <loaded src="'classroom'"></loaded>
+
+</form>

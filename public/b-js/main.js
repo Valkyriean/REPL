@@ -39,6 +39,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
         url: '/classroom/main',
         templateUrl: 'classes/content/main/main.html'
     });
+    $stateProvider.state('createclassroom', {
+        url: '/createclassroom',
+        controller: 'NewClassroomCont',
+        templateUrl: 'classes/classroom/newclassroom.html'
+    });
     // Exception
     $urlRouterProvider.otherwise('/login');
 });

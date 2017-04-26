@@ -1,7 +1,5 @@
 var Classrooms = require('../../models/ClassroomsModel');
-var jwt = require('jsonwebtoken');
-var secretKey = require('../../Strings').secretKey;
-let a = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"];
+var a = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"];
 
 
 var generateJoinCode = function() {
@@ -10,15 +8,14 @@ var generateJoinCode = function() {
         var randNumber = Math.round(Math.random() * 36 + 1);
         joinCode += a[randNumber];
     }
-    
     return joinCode;
-}
+};
 
 exports.newClassroom = function(req, res) {
     var joinCode = generateJoinCode();
     var condition = true;
     while(condition) {
-        Classrooms.findOne({'joincode':joinCode},function(err,classroom){
+        Classrooms.findOne({'joinCode':joinCode},function(err,classroom){
             if(err) throw err;
             if(classroom){
                 joinCode = generateJoinCode();
@@ -34,7 +31,7 @@ exports.newClassroom = function(req, res) {
         name: req.body.name,
         description: req.body.description,
         programLanguage: req.body.programLanguage,
-        joincode: joinCode
+        joinCode: joinCode
     };
     var newClassroom = new Classrooms(data);
     newClassroom.save(function(err) {
@@ -45,4 +42,4 @@ exports.newClassroom = function(req, res) {
             res.json({"status": 1});
         }
     });
-}
+};
