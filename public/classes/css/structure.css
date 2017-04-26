@@ -1,0 +1,20 @@
+.topbar {
+    height: 30px;
+    padding: 5px 10px;
+    background-color: #dddddd;
+    box-shadow: 0px 1px 1px #999999;
+}
+.topbar-left {
+    border: 0px;
+    height: 30px;
+    padding: 0px;
+    margin: 0px 10px 0px 0px;
+}
+.topbar-right {
+    border: 0px;
+    height: 30px;
+    float: right;
+    padding: auto 5px;
+    background-color: white;
+    margin: 0px 0px 0px 10px;
+}
