@@ -87,7 +87,7 @@ angular.module('REPL').directive('loaded', ['$cookieStore', '$http', '$state', f
             };
             $http.post('/api/users/tokenLogin', token).then(function(res) {
                 console.log($scope.src);
-                if(res.data.status == "success") {
+                if(res.data.status === "success") {
                     $state.go($scope.src);
                 }
             });
