@@ -18,3 +18,36 @@
     background-color: white;
     margin: 0px 0px 0px 10px;
 }
+
+.newclassroom .title {
+
+}
+
+.newclassroom .subtitle {
+
+}
+
+.newclassroom .language {
+
+}
+
+.newclassroom .text {
+
+}
+
+.newclassroom .button {
+
+}
+
+.newclassroom .error {
+    padding: 0px;
+    width: 80%;
+    color: red;
+    display: block;
+    font-size: 15px;
+    margin: 0px auto;
+}
+
+.newclassroom .input {
+
+}
