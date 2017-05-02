@@ -1,10 +1,9 @@
 <form ng-controller="NewClassroomCont" name="NewClassroomForm" novalidate>
 
+    <h class="title">Classroom</h>
+    <h class="subtitle"> — New Classroom</h>
+
     <div class="newclassroom">
-
-        <h1 class="title">Classroom</h1>
-
-        <h2 class="subtitle">New Classroom</h2>
 
         <div class="language">Language
             <select name="language" class="selection"  ng-model="data.language">
@@ -20,7 +19,7 @@
             <div ng-if="NewClassroomForm.name.$touched" ng-messages="NewClassroomForm.name.$error" role="alert">
                 <div ng-message="required" class="error">Please enter a value for this field.</div>
             </div>
-            <input class="input" name="name" type="text" placeholder="Classroom Name" ng-model="data.crname" ng-required="true">
+            <input class="input" name="name" type="text" placeholder="Classroom Name" ng-model="data.name" ng-required="true">
         </div>
 
         <div class="text">Description
@@ -30,6 +29,6 @@
         <input class="button" type="button" ng-click="confirm()" ng-disabled="!(NewClassroomForm.$valid)" value="Create" />
     </div>
 
-    <loaded src="'classroom'"></loaded>
+    <!--loaded src="'classroom'"></loaded-->
 
 </form>
