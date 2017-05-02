@@ -31,9 +31,7 @@ exports.newClassroom = function(req, res) {
         name: req.body.name,
         description: req.body.description,
         programLanguage: req.body.programLanguage,
-        joinCode: joinCode,
-        allowToEnter: true,
-        allowToLeave: false
+        joinCode: joinCode
     };
     var newClassroom = new Classrooms(data);
     newClassroom.save(function(err) {
@@ -66,8 +64,15 @@ exports.cloneClassrooms = function(req, res) {
         name: req.body.name + "clone",
         description: req.body.description,
         programLanguage: req.body.programLanguage,
-        joinCode: joinCode,
-        allowToEnter: true,
-        allowToLeave: false
+        joinCode: joinCode
     }
+    var newClassroom = new Classrooms(data);
+    newClassroom.save(function(err) {
+        if (err) {
+            res.json({"status": "classroom save failed for no reason"});
+        }else{
+            console.log('Classroom saved successfully!');
+            res.json({"status": 1});
+        }
+    });
 }

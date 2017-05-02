@@ -15,8 +15,8 @@ var Classrooms = new Schema({
     description: String,
     programLanguage: String,
     joincode: String,
-    allowToEnter: Boolean,
-    allowToLeave: Boolean
+    allowToEnter: {type: Boolean, default: true },
+    allowToLeave: {type: Boolean, default: true }
 });
 
 Classrooms.pre('save', function(next,done) {
