@@ -31,7 +31,9 @@ exports.newClassroom = function(req, res) {
         name: req.body.name,
         description: req.body.description,
         programLanguage: req.body.programLanguage,
-        joinCode: joinCode
+        joinCode: joinCode,
+        allowToEnter: true,
+        allowToLeave: false
     };
     var newClassroom = new Classrooms(data);
     newClassroom.save(function(err) {
@@ -43,3 +45,29 @@ exports.newClassroom = function(req, res) {
         }
     });
 };
+
+exports.cloneClassrooms = function(req, res) {
+    var joinCode = generateJoinCode();
+    var condition = true;
+    while(condition) {
+        Classrooms.findOne({'joinCode':joinCode},function(err,classroom){
+            if(err) throw err;
+            if(classroom){
+                joinCode = generateJoinCode();
+            } else {
+                condition = false;
+            }
+        });
+    }
+    var data = {
+        owner: req.decoded,
+        teacher: null,
+        student: null,
+        name: req.body.name + "clone",
+        description: req.body.description,
+        programLanguage: req.body.programLanguage,
+        joinCode: joinCode,
+        allowToEnter: true,
+        allowToLeave: false
+    }
+}
