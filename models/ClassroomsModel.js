@@ -14,7 +14,7 @@ var Classrooms = new Schema({
     name: String,
     description: String,
     programLanguage: String,
-	joinCode: String
+    joincode: String
 });
 
 Classrooms.pre('save', function(next,done) {

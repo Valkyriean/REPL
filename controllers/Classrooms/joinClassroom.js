@@ -12,16 +12,16 @@ exports.joinClasses = function(req,res){
 				if(err) throw err;
 				if(user){
 					 if(user.type === 'student'){
-					 	classroom.student.add(user.userID);
+						classroom.student.add(user.userID);
 					 }else {
-						 classroom.teacher.add(user.userID);
+						classroom.teacher.add(user.userID);
 					 }
 				}else{
 					res.json({'status':'用户不存在'});
 				}
 			});
 		}else{
-			res.json({'status':'Jcode不存在'});
+			res.json({'status':'JoinCode不存在'});
 		}
 	});
 };

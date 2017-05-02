@@ -13,3 +13,5 @@ var decodeToken = require('../controllers/Users/decodeToken').readToken;
 router.post('/dashBoard',decodeToken,dashBoard.postDashboard);
 router.post('/newClassroom',decodeToken,newClassroom.newClassroom);
 router.post('/classroomSetting',decodeToken,classroomSetting.updateClassroomSetting);
+
+module.exports = router;
