@@ -33,21 +33,22 @@ app.config(function($stateProvider, $urlRouterProvider) {
     });
     $stateProvider.state('classroom.main', {
         url: '/classroom/main',
+        controller: 'MainClassroomCont',
         templateUrl: 'classes/content/main/main.html'
     });
     $stateProvider.state('classroom.account', {
         url: '/classroom/main',
         templateUrl: 'classes/content/main/main.html'
     });
-    $stateProvider.state('createclassroom', {
+    /*$stateProvider.state('createclassroom', {
         url: '/createclassroom',
         controller: 'NewClassroomCont',
         templateUrl: 'classes/classroom/newclassroom.html'
-    });
-    $stateProvider.state('classroom.creat', {
+    });*/
+    $stateProvider.state('classroom.create', {
         url: '/createclassroom',
         controller: 'NewClassroomCont',
-        templateUrl: 'classes/classroom/newclassroom.html'
+        templateUrl: 'classes/content/new/new.html'
     });
     // Exception
     $urlRouterProvider.otherwise('/login');
