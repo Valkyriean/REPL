@@ -40,12 +40,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         url: '/classroom/main',
         templateUrl: 'classes/content/main/main.html'
     });
-    /*$stateProvider.state('createclassroom', {
-        url: '/createclassroom',
-        controller: 'NewClassroomCont',
-        templateUrl: 'classes/classroom/newclassroom.html'
-    });*/
-    $stateProvider.state('classroom.create', {
+    $stateProvider.state('classroom.creat', {
         url: '/createclassroom',
         controller: 'NewClassroomCont',
         templateUrl: 'classes/content/new/new.html'
