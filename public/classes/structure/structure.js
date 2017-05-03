@@ -3,8 +3,9 @@
  */
 var app = angular.module('REPL');
 app.controller('ClassroomCont', function($cookieStore, $scope, $state, $http) {
-    $scope.logout = function(add) {
+    $scope.logout = function() {
         $cookieStore.remove("WatchCatLoginToken");
+        $state.go('login');
     };
     $scope.goState = function(add) {
         $state.go(add);
