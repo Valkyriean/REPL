@@ -20,7 +20,10 @@
 }
 
 .newclassroom .title {
-
+    text-align: center;
+    height: 30px;
+    margin: 0px;
+    padding: 3% 0px 5%;
 }
 
 .newclassroom .subtitle {
@@ -46,7 +49,7 @@
     display: block;
     font-size: 15px;
     margin: 0px auto;
-}
+}s
 
 .newclassroom .input {
 
