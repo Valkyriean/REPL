@@ -15,6 +15,7 @@ var Assignment = new Schema({
     dueDate: Date,
     schedualDate: Date,
     correctionType: String,
+    //Manual , Auto
     testCases: Array,
     classroomID: Array
 });

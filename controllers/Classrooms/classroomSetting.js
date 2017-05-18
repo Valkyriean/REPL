@@ -60,25 +60,31 @@ exports.deleteClassroom = function(req,res) {
         res.json({"status": "userNoPower"});
     } else {
         res.json({"status": ret})
-    };
+    }
 };
 
 exports.transferOwnership = function(req,res) {
     var result = isOwner(req.decoded,Classrooms,req.body.classroomID);
     if(result.boo === "isOwner") {
-        result.cla.owner = req.body.transferedOwner;
-        result.cla.teacher.push(req.decoded);
+        result.classroom.owner = req.body.transferedOwner;
+        result.classroom.teacher.push(req.decoded);
         res.json({"status": "transfer success"});
     } else if(result.boo === "isteacher") {
         res.json({"status": "userNoPower"});
     } else {
         res.json({"status": result})
-    };
+    }
 };
 
 exports.kickTeacher = function(req,res) {
     var result = isOwner(req.decoded,Classrooms,req.body.classroomID);
     if(result.boo === "isOwner") {
-        
+        result.classroom.teachers.remove(req.body.userID);
+	    res.json({"status": "kick success"});
+    }else{
+	    res.json({"status": "userNoPower"});
     }
-}
+};
+
+exports.kickStudent = function(req,res){
+};
