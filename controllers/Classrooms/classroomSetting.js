@@ -1,5 +1,4 @@
 var Classrooms = require('../../models/ClassroomsModel');
-var User = require('../../models/UserModel');
 
 var isOwner = function(decoded,Classrooms,classroomID) {
     Classrooms.findOne({'classroomID':classroomID},function(err,classroom) {
@@ -79,12 +78,23 @@ exports.transferOwnership = function(req,res) {
 exports.kickTeacher = function(req,res) {
     var result = isOwner(req.decoded,Classrooms,req.body.classroomID);
     if(result.boo === "isOwner") {
-        result.classroom.teachers.remove(req.body.userID);
-	    res.json({"status": "kick success"});
-    }else{
-	    res.json({"status": "userNoPower"});
+        var a = result.classroom.teacher.indexOf(req.body.userID);
+        result.classroom.teacher.splice(a, 1);
+        res.json({"status": "success"});
+    } else {
+        res.json({"status": result});
     }
 };
 
-exports.kickStudent = function(req,res){
+exports.kickStudent = function(req,res) {
+    var result = isOwner(req.decoded, Classrooms, req.body.classroomID);
+    if(result.boo === "isOwner" || result.boo === "isTeacher") {
+        for(var obj in req.body.userID) {
+            var a = result.classroom.teacher.indexOf(obj);
+            result.classroom.student.splice(a, 1);
+        }
+        res.json({"status": "success"});
+    } else {
+        res.json({"status": result});
+    }
 };

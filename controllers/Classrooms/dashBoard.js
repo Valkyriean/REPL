@@ -1,6 +1,4 @@
 var Classrooms = require('../../models/ClassroomsModel');
-var jwt = require('jsonwebtoken');
-var secretKey = require('../../Strings').secretKey;
 var User = require('../../models/UserModel');
 
 
