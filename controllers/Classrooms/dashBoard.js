@@ -1,11 +1,11 @@
 var Classrooms = require('../../models/ClassroomsModel');
-var User = require('../../models/UserModel');
+var Users = require('../../models/UserModel');
 
 
 exports.postDashboard = function(req,res){
     var type;
     var id;
-    User.findOne({'userID':req.decoded},function (err,user) {
+    Users.findOne({'userID':req.decoded},function (err,user) {
         if(err) throw err;
         if(user){
             type = user.type;

@@ -9,7 +9,10 @@ exports.newAssignment = function(req, res) {
             if(user.type === "student") {
                 res.json({"status": "user no power"});
             } else {
-                
+                var data = {
+                    type: req.body.type,
+                    givencode: req.body.givencode
+                };
             }
         }
     });
