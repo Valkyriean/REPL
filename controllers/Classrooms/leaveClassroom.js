@@ -23,12 +23,12 @@ exports.leaveClassroom = function(req, res) {
                             res.json({'status': "success"});
                         } else {
                             res.json({'status': "cannot leave"});
-                        };
-                    };
-                };
+                        }
+                    }
+                }
             });
         } else {
             res.json({'status': "classroom does not exist"});
-        };
+        }
     });
 };
