@@ -8,11 +8,13 @@ var IDcounter = require('./IDcounter').nextID('Assignments');
 var Assignment = new Schema({
     assignmentID: Number,
     type: String,
+    //publish,schedual,draft,correctionType
     givenCode: String,
     description: String,
     SudentWorks: Array,
-    //userID, status, code, commond
+    //userID, status, code, comment
     dueDate: Date,
+    publishDate: Date,
     schedualDate: Date,
     correctionType: String,
     //Manual , Auto
