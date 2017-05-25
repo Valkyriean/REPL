@@ -25,6 +25,8 @@ exports.leaveClassroom = function(req, res) {
                             res.json({'status': "cannot leave"});
                         }
                     }
+                } else {
+                    res.json({'status': "token does not exist"});
                 }
             });
         } else {

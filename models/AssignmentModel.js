@@ -14,7 +14,6 @@ var Assignment = new Schema({
     SudentWorks: Array,
     //userID, status, code, comment
     dueDate: Date,
-    publishDate: Date,
     schedualDate: Date,
     correctionType: String,
     //Manual , Auto

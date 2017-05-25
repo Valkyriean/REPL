@@ -68,7 +68,7 @@ exports.cloneClassrooms = function(req, res) {
                             owner: req.decoded,
                             teacher: null,
                             student: null,
-                            name: classroom.name + "clone",
+                            name: classroom.name + " clone",
                             description: classroom.description,
                             programLanguage: classroom.programLanguage,
                             joinCode: joinCode
