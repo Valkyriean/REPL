@@ -23,7 +23,7 @@ router.delete('/deleteUser', encryption.encryptPass, decodeToken, account.delete
 
 //forget pass
 router.post('/lostPass',forgetPass.lostPass);
-//email =>status
+//email =>status (token if dev mode)
 router.post('/findPass',encryption.encryptPass,forgetPass.findPass);
 //token, pass => status
 

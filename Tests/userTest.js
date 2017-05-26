@@ -99,12 +99,75 @@ describe('Users',() =>{
 	it('it should change password (correct info)', (done) => {
 		chai.request(endPoint)
 			.put('/users/changePass')
-			.send({"token":token,})
+			.send({"token":token,"oldPass":"testpass1","newPass":"testpass2"})
 			.end((err, res) => {
-				res.body.should.have.status(111);
+				res.body.should.have.status(1);
 				done();
 			});
 	});
 
+	it('it shouldnt change password (wrong old password)', (done) => {
+		chai.request(endPoint)
+			.put('/users/changePass')
+			.send({"token":token,"oldPass":"testpass1","newPass":"testpass2"})
+			.end((err, res) => {
+				res.body.should.have.status(132);
+				done();
+			});
+	});
 
+	//lost pass
+	let retrieveToken;
+	it('it should retrieve password (correct info)', (done) => {
+		chai.request(endPoint)
+			.post('/users/lostPass')
+			.send({"email":"test1@email.com"})
+			.end((err, res) => {
+				retrieveToken = res.body.token;
+				res.body.should.have.status(1);
+				done();
+			});
+	});
+
+	//find pass
+	it('it should retrieve password (correct info)', (done) => {
+		chai.request(endPoint)
+			.post('/users/findPass')
+			.send({"token":retrieveToken,"pass":"testpass1"})
+			.end((err, res) => {
+				res.body.should.have.status(1);
+				done();
+			});
+	});
+
+	it('it shouldnt retrieve password (wrong token)', (done) => {
+		chai.request(endPoint)
+			.post('/users/findPass')
+			.send({"token":"randomFakeTokenHere","pass":"testpass1"})
+			.end((err, res) => {
+				res.body.should.have.status(151);
+				done();
+			});
+	});
+
+	//delete user
+	it('it should delete user (correct info)', (done) => {
+		chai.request(endPoint)
+			.delete('/users/deleteUser')
+			.send({"token":token,"pass":"testpass1"})
+			.end((err, res) => {
+				res.body.should.have.status(1);
+				done();
+			});
+	});
+
+	it('it shouldnt delete user (wrong pass)', (done) => {
+		chai.request(endPoint)
+			.delete('/users/deleteUser')
+			.send({"token":token,"pass":"testpass2"})
+			.end((err, res) => {
+				res.body.should.have.status(133);
+				done();
+			});
+	});
 });

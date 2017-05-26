@@ -5,6 +5,8 @@ const nodemailer = require('nodemailer');
 var User = require('../../models/UserModel');
 var jwt = require('jsonwebtoken');
 var secretKey = require('../../Strings').secretKey;
+var dev = require('../../Strings').dev;
+
 
 var transporter = nodemailer.createTransport({
     service: 'qq',
@@ -18,22 +20,25 @@ exports.lostPass = function (req,res,next) {
     User.findOne({'email': req.body.email},function (err, user) {
         if(err) throw err;
         if(user) {
-	        console.log(user);
 	        var token = jwt.sign({
 		        data: user.email
 	        }, secretKey, {expiresIn:'24h'});
-	        console.log(token);
-	        var mailOption = {
-	            from: '1034743427@qq.com',
-	            to: req.body.email,
-	            subject: 'Change your REPL password',
-	            text: "localhost:3000/#!/findpass/" + token//only for testing
-	        };
-	        transporter.sendMail(mailOption, function (err, response) {
-	            if(err) throw err;
-	            console.log("success");
-	        });
-	        res.json({"status": 1});
+	        if(dev){
+		        console.log(token);
+		        res.json({"status": 1,"token":token});
+	        }else{
+		        var mailOption = {
+			        from: '1034743427@qq.com',
+			        to: req.body.email,
+			        subject: 'Change your REPL password',
+			        text: "localhost:3000/#!/findpass/" + token//only for testing
+		        };
+		        transporter.sendMail(mailOption, function (err, response) {
+			        if(err) throw err;
+			        console.log("success");
+		        });
+		        res.json({"status": 1});
+	        }
         }else {
 	        res.json({"status": 1});
 	        console.log("user does not found");
@@ -42,7 +47,7 @@ exports.lostPass = function (req,res,next) {
     });
 };
 
-exports.findPass = function(req,res,next){
+exports.findPass = function(req,res){
 	jwt.verify(req.body.token, secretKey,function(err,decoded){
 		if(err){
 			res.json({"status": 151});
