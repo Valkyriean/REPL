@@ -106,7 +106,7 @@ exports.postDashboard = function(req,res){
 
     //do not know if this works
     Assignments.update(
-        {'type': "schedule", 'scheduleDate': myDate.toLocaleDateString},
+        {'type': "schedule", 'scheduleDate': myDate},
         {'scheduleDate': null, 'type': "publish"},{multi: true}, function (err) {
             if(err) throw err;
         });
@@ -114,7 +114,7 @@ exports.postDashboard = function(req,res){
         if(err) throw err;
         if(assignment) {
             for(var obj in assignment) {
-                if(obj.dueDate != null && obj.dueDate < myDate.toLocaleDateString && obj.type != "due") {
+                if(obj.dueDate != null && obj.dueDate < myDate && obj.type != "due") {
                     Assignments.update(
                         {'assignmentID': assignment.assignmentID},
                         {'type': "due", 'dueDate': null, 'scheduleDate': null}, function (err) {
