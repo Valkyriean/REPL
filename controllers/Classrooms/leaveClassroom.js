@@ -15,7 +15,7 @@ exports.leaveClassroom = function(req, res) {
                             res.json({'status': "success"});
                         } else {
                             res.json({'status': "cannot leave"});
-                        }
+                        };
                     } else if(user.type === "teacher") {
                         if(classroom.teacher.contains(req.decoded)) {
                             var b = classroom.teacher.indexof(req.decoded);
@@ -23,14 +23,14 @@ exports.leaveClassroom = function(req, res) {
                             res.json({'status': "success"});
                         } else {
                             res.json({'status': "cannot leave"});
-                        }
-                    }
+                        };
+                    };
                 } else {
                     res.json({'status': "token does not exist"});
-                }
+                };
             });
         } else {
             res.json({'status': "classroom does not exist"});
-        }
+        };
     });
 };

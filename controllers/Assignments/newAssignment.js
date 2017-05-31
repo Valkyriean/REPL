@@ -25,19 +25,19 @@ exports.newAssignment = function(req, res) {
             description: req.body.description,
             studentWorks: null,
             dueDate: req.body.dueDate,
-            schedualDate: null,
+            scheduleDate: null,
             correctionType: req.body.correctionType,
             testCases: req.body.testCases,
             classroomID: req.body.classroomID
         };
-    } else if(req.body.type === "schedual") {
+    } else if(req.body.type === "schedule") {
         var data = {
-            type: "schedual",
+            type: "schedule",
             givencode: req.body.givencode,
             description: req.body.description,
             studentWorks: null,
             dueDate: req.body.dueDate,
-            schedualDate: req.body.schedualDate,
+            scheduleDate: req.body.scheduleDate,
             correctionType: req.body.correctionType,
             testCases: req.body.testCases,
             classroomID: req.body.classroomID
@@ -49,7 +49,7 @@ exports.newAssignment = function(req, res) {
             description: req.body.description,
             studentWorks: null,
             dueDate: null,
-            schedualDate: null,
+            scheduleDate: null,
             correctionType: req.body.correctionType,
             testCases: req.body.testCases,
             classroomID: req.body.classroomID
@@ -68,29 +68,27 @@ exports.cloneAssignment = function (req,res) {
     Assignments.findOne({'assignmentID': req.body.assignmentID}, function (err, assignment) {
         if(err) throw err;
         if(assignment) {
-            var classroomID = assignment.classroomID;
             for(var obj in req.body.newClassroomID) {
-                classroomID.push(obj);
-            };
-            var data = {
-                type: "draft",
-                givencode: assignment.givencode,
-                description: assignment.description,
-                studentWorks: null,
-                dueDate: null,
-                schedualDate: null,
-                correctionType: assignment.correctionType,
-                testCases: assignment.testCases,
-                classroomID: classroomID
-            };
-            var newAssignment = new Assignments(data);
-            newAssignment.save(function (err) {
-                if(err) {
-                    res.json({'status': "failed to save"});
-                } else {
-                    res.json({'status': "success"});
+                var data = {
+                    type: "draft",
+                    givencode: assignment.givencode,
+                    description: assignment.description,
+                    studentWorks: null,
+                    dueDate: null,
+                    scheduleDate: null,
+                    correctionType: assignment.correctionType,
+                    testCases: assignment.testCases,
+                    classroomID: obj
                 };
-            });
-        }
-    })
+                var newAssignment = new Assignments(data);
+                newAssignment.save(function (err) {
+                    if(err) {
+                        res.json({'status': "failed to save"});
+                    } else {
+                        res.json({'status': "success"});
+                    };
+                });
+            };
+        };
+    });
 };

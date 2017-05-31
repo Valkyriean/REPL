@@ -5,6 +5,8 @@ var Assignments = require('../../models/AssignmentModel');
 var Classrooms = require('../../models/ClassroomsModel');
 var Users = require('../../models/UserModel');
 
+
+
 exports.unpublishAssignment = function (req, res) {
     Assignments.findOne({'assignmentID': req.body.assignmentID}, function (err, assignment) {
         if(err) throw err;
@@ -12,7 +14,7 @@ exports.unpublishAssignment = function (req, res) {
             if(assignment.type === "publish") {
                 assignment.type = "draft";
                 assignment.dueDate = null;
-                assignment.schedualDate = null;
+                assignment.scheduleDate = null;
                 res.json({'status': "success"});
             } else {
                 res.json({'status': "cannot unpublish"});
@@ -21,5 +23,9 @@ exports.unpublishAssignment = function (req, res) {
             res.json({'status': "assignment does not exist"});
         };
     });
+};
+
+exports.handInAssignment = function (req, res) {
+    
 };
 
