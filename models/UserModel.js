@@ -4,8 +4,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 // var IDcounter = require('./IDcounter').nextID('Users');
-var counterPlugin = require('../plugins/counterPlugin').counterPlugin(User,"Users");
-
+mongoose.plugin(require('../plugins/counterPlugin'));
 
 var User = new Schema({
     userID: Number,
@@ -27,6 +26,6 @@ var User = new Schema({
 //         next();
 //     }
 // });
-User.plugin(counterPlugin);
+User.plugin(counterPlugin,{modelID:"UserID",model:"Users"});
 
 module.exports = mongoose.model('User', User);

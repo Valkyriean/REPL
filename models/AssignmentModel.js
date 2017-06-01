@@ -9,7 +9,7 @@ var counterPlugin = require('../plugins/counterPlugin').counterPlugin(Assignment
 var Assignment = new Schema({
     assignmentID: Number,
     type: String,
-    //publish,schedule,draft,correctionType,dued
+    //publish,schedule,draft,dued
     givenCode: String,
     description: String,
     StudentWorks: Array,

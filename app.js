@@ -28,8 +28,8 @@ app.use('/api',api);
  * open cmd first, and copy those code
  *
  *================================================
- * cd C:\Program Files\MongoDB\Server\3.2\bin
- * mongod --dbpath C:\Projects\data\db
+ *              cd C:\Program Files\MongoDB\Server\3.2\bin
+ *              mongod --dbpath C:\Projects\data\db
  *================================================
  *
  * On Linux ubuntu start code is
