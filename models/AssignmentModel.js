@@ -3,7 +3,8 @@
  */
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var IDcounter = require('./IDcounter').nextID('Assignments');
+// var IDcounter = require('./IDcounter').nextID('Assignments');
+var counterPlugin = require('../plugins/counterPlugin').counterPlugin(Assignment,"Assignments");
 
 var Assignment = new Schema({
     assignmentID: Number,
@@ -21,16 +22,17 @@ var Assignment = new Schema({
     classroomID: Array
 });
 
-Assignment.pre('save', function(next,done) {
-    var self = this;
-    if (this.isNew) {
-        IDcounter.next(function (nextID) {
-            self.UserID = nextID;
-            next();
-        });
-    } else {
-        next();
-    }
-});
+// Assignment.pre('save', function(next,done) {
+//     var self = this;
+//     if (this.isNew) {
+//         IDcounter.next(function (nextID) {
+//             self.UserID = nextID;
+//             next();
+//         });
+//     } else {
+//         next();
+//     }
+// });
+Assignment.plugin(counterPlugin);
 
 module.exports = mongoose.model('Assignment', Assignment);
