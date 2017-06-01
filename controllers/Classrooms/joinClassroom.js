@@ -16,16 +16,16 @@ exports.joinClasses = function(req,res){
 							classroom.student.add(user.userID);
 						}else {
 							classroom.teacher.add(user.userID);
-						 }
+						 };
 					}else{
 						res.json({'status':'用户不存在'});
-					}
+					};
 				});
 			} else {
 				res.json({"status": "not allow to enter"})
-			}
+			};
 		} else {
 			res.json({'status':'JoinCode不存在'});
-		}
+		};
 	});
 };

@@ -9,17 +9,17 @@ var counterPlugin = require('../plugins/counterPlugin').counterPlugin(Assignment
 var Assignment = new Schema({
     assignmentID: Number,
     type: String,
-    //publish,schedual,draft,correctionType
+    //publish,schedule,draft,correctionType,dued
     givenCode: String,
     description: String,
-    SudentWorks: Array,
+    StudentWorks: Array,
     //userID, status, code, comment
     dueDate: Date,
-    schedualDate: Date,
+    scheduleDate: Date,
     correctionType: String,
     //Manual , Auto
     testCases: Array,
-    classroomID: Array
+    classroomID: Number
 });
 
 // Assignment.pre('save', function(next,done) {
