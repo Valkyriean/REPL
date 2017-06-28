@@ -11,6 +11,10 @@ exports.joinClasses = function(req,res){
 			if(classroom.allowToEnter) {
 				Users.findOne({'userID':req.decoded},function(err,user){
 					if(err) throw err;
+					if(classroom.owner === req.decoded || classroom.teacher.contains(req.decoded) || classroom.student.contains(req.decoded)){
+						res.json({'status':'already in there'})
+					}
+					//owner can not join his own classroom as a teacher
 					if(user){
 						 if(user.type === 'student'){
 							classroom.student.add(user.userID);
