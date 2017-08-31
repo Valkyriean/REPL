@@ -15,6 +15,15 @@ var newStudentWorks = function (studentID) {
     return studentWork;
 };
 
+var alreadyThere = function(arr,id){
+    for(x in arr){
+        if(x===id){
+            return true;
+        }
+    }
+    return false;
+}
+
 exports.joinClasses = function(req,res){
 	Classrooms.findOne({'joinCode':req.body.joinCode},function(err,classroom) {
 		if(err) throw err;
@@ -22,13 +31,16 @@ exports.joinClasses = function(req,res){
 			if(classroom.allowToEnter) {
 				Users.findOne({'userID':req.decoded},function(err,user){
 					if(err) throw err;
-					if(classroom.owner === req.decoded || classroom.teacher.contains(req.decoded) || classroom.student.contains(req.decoded)){
+                    console.log(classroom);
+
+                    console.log(typeof(classroom.student));
+					if(classroom.owner === req.decoded || alreadyThere(classroom.teacher,req.decoded)||alreadyThere(classroom.student,req.decoded)){
 						res.json({'status':'already in there'})
 					}
 					//owner can not join his own classroom as a teacher
 					if(user){
 						 if(user.type === 'student'){
-							classroom.student.add(user.userID);
+							classroom.student.push(user.userID);
 							Assignments.find({'classroomID': classroom.classroomID, 'type': "publish"}, {'assignmentID': true, "student": true}, function (err, assignments) {
                                  if(err) throw err;
                                  if(assignments) {

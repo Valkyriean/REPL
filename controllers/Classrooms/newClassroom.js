@@ -26,11 +26,8 @@ var generateJoinCode = function(Classrooms) {
 exports.newClassroom = function(req, res) {
     console.log(req.decoded);
     Users.findOne({"userID": req.decoded}, function(err, user) {
-        console.log(user);
         if(err) throw err;
         if(user) {
-            console.log(user.type);
-            console.log(req.decoded);
             if(user.type === "student") {
                 res.json({"status": "user no power"});
             } else {
@@ -38,8 +35,8 @@ exports.newClassroom = function(req, res) {
 
                 var data = {
                     owner: req.decoded,
-                    teacher: null,
-                    student: null,
+                    teacher: [],
+                    student: [],
                     name: req.body.name,
                     description: req.body.description,
                     programLanguage: req.body.programLanguage,

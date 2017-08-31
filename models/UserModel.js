@@ -15,18 +15,18 @@ var User = new Schema({
     lastname: String,
     pass: { type: String, required: true }
 });
-//
+
 User.pre('save', function(next,done) {
     var self = this;
     if (this.isNew) {
         IDcounter.next(function (nextID) {
-            self.UserID = nextID;
+            self.userID = nextID;
             next();
         });
     } else {
         next();
     }
 });
-// User.plugin(counterPlugin,{modelID:"UserID",model:"Users"});
+// User.plugin(counterPlugin,{modelID:"userID",model:"Users"});
 
 module.exports = mongoose.model('User', User);

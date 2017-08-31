@@ -3,7 +3,7 @@
  */
 var IDcounter = require('../models/IDcounter');
 
-module.exports  =function counterPlugin (schema,options) {
+module.exports  = exports =function counterPlugin (schema,options) {
 	schema.pre('save', function(next,done) {
 		var self = this;
 		if (this.isNew) {
