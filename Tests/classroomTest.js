@@ -130,4 +130,27 @@ describe('Classrooms',() =>{
 
     //教室未开放加入
 
+
+    //喜闻乐见的毁尸灭迹时刻
+    it('delete teacher', (done) => {
+        chai.request(endPoint)
+            .delete('/users/deleteUser')
+            .send({"token":teacherToken,"pass":"testpass1"})
+            .end((err, res) => {
+                res.body.should.have.status(1);
+                done();
+            });
+    });
+
+    it('delete student', (done) => {
+        chai.request(endPoint)
+            .delete('/users/deleteUser')
+            .send({"token":studentToken,"pass":"testpass1"})
+            .end((err, res) => {
+                res.body.should.have.status(1);
+                done();
+            });
+    });
+    console.log(teacherToken);
+    console.log(studentToken);
 });
