@@ -34,7 +34,12 @@ exports.joinClasses = function(req,res){
                     console.log(classroom);
 
                     console.log(typeof(classroom.student));
-					if(classroom.owner === req.decoded || alreadyThere(classroom.teacher,req.decoded)||alreadyThere(classroom.student,req.decoded)){
+                    var stu = new Array();
+                    stu = classroom.student;
+                    console.log(typeof(stu));
+                    console.log(stu);
+
+                    if(classroom.owner === req.decoded || alreadyThere(classroom.teacher,req.decoded)||alreadyThere(classroom.student,req.decoded)){
 						res.json({'status':'already in there'})
 					}
 					//owner can not join his own classroom as a teacher
