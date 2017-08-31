@@ -24,6 +24,7 @@ var generateJoinCode = function(Classrooms) {
 };
 
 exports.newClassroom = function(req, res) {
+    console.log(req.decoded);
     Users.findOne({"userID": req.decoded}, function(err, user) {
         console.log(user);
         if(err) throw err;
