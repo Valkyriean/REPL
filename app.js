@@ -30,6 +30,20 @@ app.use('/api',api);
  *================================================
  *              cd C:\Program Files\MongoDB\Server\3.2\bin
  *              mongod --dbpath C:\Projects\data\db
+ *
+ *              cd C:\Users\phant\WebstormProjects\REPL
+ *              node app.js
+ *              cd C:\Users\phant\WebstormProjects\REPL\Tests
+ *              mocha
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  *================================================
  *
  * On Linux ubuntu start code is
