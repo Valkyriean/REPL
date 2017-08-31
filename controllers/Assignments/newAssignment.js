@@ -18,7 +18,7 @@ exports.checkConditions = function (req, res) {
 };
 
 exports.assertStudent = function (req, res) {
-
+    
 };
 
 exports.newAssignment = function(req, res) {
@@ -40,15 +40,11 @@ exports.newAssignment = function(req, res) {
                 type =  "schedule"
                 dueDate = req.body.dueDate
                 scheduleDate =  req.body.scheduleDate
-            } else if(req.body.type === "draft"){
+            } else {
                 type = "draft";
                 dueDate =  null;
                 scheduleDate =  null;
-            } else{
-                res.json({'status': 'unexpected type'});
             };
-        }else{
-            res.json({'status':'classroom does not exist'});
         };
         var data = {
             type: type,
@@ -72,7 +68,6 @@ exports.newAssignment = function(req, res) {
     });
 
 };
-
 exports.cloneAssignment = function (req,res) {
     Assignments.findOne({'assignmentID': req.body.assignmentID}, function (err, assignment) {
         if(err) throw err;
