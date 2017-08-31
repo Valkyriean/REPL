@@ -3,6 +3,17 @@
  */
 var Classrooms = require('../../models/ClassroomsModel');
 var Users = require('../../models/UserModel');
+var Assignments = require('../../models/AssignmentModel');
+
+var newStudentWorks = function (studentID) {
+    var studentWork = {
+        'studentID': studentID,
+        'status': "unfinished",
+        'code': null,
+        'comment': null
+    };
+    return studentWork;
+};
 
 exports.joinClasses = function(req,res){
 	Classrooms.findOne({'joinCode':req.body.joinCode},function(err,classroom) {
@@ -18,9 +29,23 @@ exports.joinClasses = function(req,res){
 					if(user){
 						 if(user.type === 'student'){
 							classroom.student.add(user.userID);
+							Assignments.find({'classroomID': classroom.classroomID, 'type': "publish"}, {'assignmentID': true, "student": true}, function (err, assignments) {
+                                 if(err) throw err;
+                                 if(assignments) {
+                                 	var studentWorks
+                                 	for(var obj in assignments) {
+                                 		studentWorks = obj.studentWorks.push(newStudentWorks(req.decoded));
+										Assignments.update({'assignmentID': obj.assignmentID},{'studentWorks': studentWorks}, function (err) {
+											if(err) throw err;
+										})
+									}
+                                 }
+                             })
 						}else {
 							classroom.teacher.add(user.userID);
 						 };
+
+
 					}else{
 						res.json({'status':'用户不存在'});
 					};
