@@ -47,14 +47,17 @@ exports.joinClasses = function(req,res){
 
 
 					}else{
-						res.json({'status':'用户不存在'});
+                        //user not found
+						res.json({'status':'ユーザーが見つからない'});
 					};
 				});
 			} else {
-				res.json({"status": "not allow to enter"})
+                //classroom are closed
+				res.json({"status": "教室は開放的でない"})
 			};
-		} else {
-			res.json({'status':'JoinCode不存在'});
+		} else {、
+            //Jcode does not exist
+			res.json({'status':'Jcode存在しない'});
 		};
 	});
 };

@@ -45,7 +45,7 @@ descrbe('Classroom',() =>{
             });
     });
 
-    it('student login', (done) => {
+    it('teacher login', (done) => {
         chai.request(endPoint)
             .post('/users/passLogin')
             .send({"email":"teacher@email.com","pass":"testpass1"})
@@ -57,7 +57,77 @@ descrbe('Classroom',() =>{
     });
 
 
-
     //先测试创建classroom 失败条件 学生无权 成功返回1
+    //分别测试加入和退出开启关闭的时候的 两种 直接转换和setting彻底转换
+    //最后分别测试有权无权时（teacher student） 的 clone transfer kicks
+
+    //然而创建classroom的时候并不会返回Jcode 所以要在开启dev模式的时候额外显示jcode
+    let Jcode;
+
+    it('teacher creat classroom', (done) => {
+        chai.request(endPoint)
+            .post('/classroom/newClassroom')
+            .send({
+                "token":teacherToken,
+                "name":"testClassroom",
+                "description":"test Classroom desscription here",
+                "programLanguage":"java"
+            })
+            .end((err, res) => {
+                Jcode = res.body.Jcode;
+                res.body.should.have.status(1);
+                done();
+            });
+    });
+
+    it('student creat classroom, failure expected', (done) => {
+        chai.request(endPoint)
+            .post('/classroom/newClassroom')
+            .send({
+                "token":studentToken,
+                "name":"testClassroom",
+                "description":"test Classroom desscription here",
+                "programLanguage":"java"
+            })
+            .end((err, res) => {
+                res.body.should.have.status("user no power");
+                done();
+            });
+    });
+
+    //此时学生加入再退出
+    it('student join classroom', (done) => {
+        chai.request(endPoint)
+            .post('/classroom/joinClassroom')
+            .send({
+                "token":studentToken,
+                "joinCode":Jcode
+            })
+            .end((err, res) => {
+                res.body.should.have.status(1);
+                done();
+            });
+    });
+
+    //额成功加入的code有点问题于是就先写失败加入的了
+    //Jocde不存在
+    it('student join classroom using wrong Jcode', (done) => {
+        chai.request(endPoint)
+            .post('/classroom/joinClassroom')
+            .send({
+                "token":studentToken,
+                "joinCode":"randomFakeJcodeHere"
+            })
+            .end((err, res) => {
+                res.body.should.have.status("Jcode存在しない");
+                done();
+            });
+    });
+
+    //教室关闭加入
+
+
+
+    //教室未开放加入
 
 });

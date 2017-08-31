@@ -2,7 +2,7 @@ var Classrooms = require('../../models/ClassroomsModel');
 var Users = require('../../models/UserModel');
 var Assignments = require('../../models/AssignmentModel')
 var a = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"];
-
+var dev = require('../../String').dev;
 
 var generateJoinCode = function(Classrooms) {
     var joinCode = String;
@@ -31,7 +31,7 @@ exports.newClassroom = function(req, res) {
                 res.json({"status": "user no power"});
             } else {
                 var joinCode = generateJoinCode(Classrooms);
-                
+
                 var data = {
                     owner: req.decoded,
                     teacher: null,
@@ -46,8 +46,12 @@ exports.newClassroom = function(req, res) {
                     if (err) {
                         res.json({"status": "classroom save failed for no reason"});
                     }else{
-                        console.log('Classroom saved successfully!');
-                        res.json({"status": 1});
+                        if(dev){
+                            console.log('Classroom saved successfully! Jcode is '+joinCode);
+                            res.json({"status": 1,"Jcode",joinCode});
+                        }else{
+                            res.json({"status": 1});
+                        }
                     };
                 });
             };
