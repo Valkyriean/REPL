@@ -119,11 +119,10 @@ exports.postDashboard = function(req,res){
                         {'assignmentID': assignment.assignmentID},
                         {'type': "due", 'dueDate': null, 'scheduleDate': null}, function (err) {
                             if(err) throw err;
-                        }
-                    )
-                }
-            }
-        }
+                        });
+                };
+            };
+        };
     });
     res.json({"status": "1", "data":data});
 };
