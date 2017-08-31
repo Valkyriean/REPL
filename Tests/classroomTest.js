@@ -9,10 +9,9 @@
 
  let endPoint = "http://localhost:3000/api";
 
-descrbe('Classroom',() =>{
+describe('Classrooms',() =>{
     //需要先创建测试用id 分别为学生身份以及教师身份
-    let studentToken;
-    let teacherToken;
+
 
     it('student signup', (done) => {
         chai.request(endPoint)
@@ -23,7 +22,7 @@ descrbe('Classroom',() =>{
                 done();
             });
     });
-
+    let studentToken;
     it('student login', (done) => {
         chai.request(endPoint)
             .post('/users/passLogin')
@@ -38,13 +37,14 @@ descrbe('Classroom',() =>{
     it('teacher signup', (done) => {
         chai.request(endPoint)
             .post('/users/signup')
-            .send({"email":"teacher@email.com","type":"student","firstname":"test","lastname":"test","pass":"testpass1","conf":"testpass1"})
+            .send({"email":"teacher@email.com","type":"teacher","firstname":"test","lastname":"test","pass":"testpass1","conf":"testpass1"})
             .end((err, res) => {
                 res.body.should.have.status(1);
                 done();
             });
     });
 
+    let teacherToken;
     it('teacher login', (done) => {
         chai.request(endPoint)
             .post('/users/passLogin')
@@ -66,7 +66,7 @@ descrbe('Classroom',() =>{
 
     it('teacher creat classroom', (done) => {
         chai.request(endPoint)
-            .post('/classroom/newClassroom')
+            .post('/classrooms/newClassroom')
             .send({
                 "token":teacherToken,
                 "name":"testClassroom",
@@ -82,7 +82,7 @@ descrbe('Classroom',() =>{
 
     it('student creat classroom, failure expected', (done) => {
         chai.request(endPoint)
-            .post('/classroom/newClassroom')
+            .post('/classrooms/newClassroom')
             .send({
                 "token":studentToken,
                 "name":"testClassroom",
@@ -98,7 +98,7 @@ descrbe('Classroom',() =>{
     //此时学生加入再退出
     it('student join classroom', (done) => {
         chai.request(endPoint)
-            .post('/classroom/joinClassroom')
+            .post('/classrooms/joinClassroom')
             .send({
                 "token":studentToken,
                 "joinCode":Jcode
@@ -113,7 +113,7 @@ descrbe('Classroom',() =>{
     //Jocde不存在
     it('student join classroom using wrong Jcode', (done) => {
         chai.request(endPoint)
-            .post('/classroom/joinClassroom')
+            .post('/classrooms/joinClassroom')
             .send({
                 "token":studentToken,
                 "joinCode":"randomFakeJcodeHere"

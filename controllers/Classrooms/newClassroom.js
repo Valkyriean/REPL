@@ -24,9 +24,12 @@ var generateJoinCode = function(Classrooms) {
 };
 
 exports.newClassroom = function(req, res) {
+    console.log("fk u");
     Users.findOne({"userID": req.decoded}, function(err, user) {
         if(err) throw err;
         if(user) {
+            console.log(user.type);
+            console.log(req.decoded);
             if(user.type === "student") {
                 res.json({"status": "user no power"});
             } else {
@@ -46,12 +49,12 @@ exports.newClassroom = function(req, res) {
                     if (err) {
                         res.json({"status": "classroom save failed for no reason"});
                     }else{
-                        if(dev){
+                        // if(dev){
                             console.log('Classroom saved successfully! Jcode is '+ joinCode);
                             res.json({"status": 1, 'Jcode': joinCode});
-                        }else{
-                            res.json({"status": 1});
-                        }
+                        // }else{
+                        //     res.json({"status": 1});
+                        // }
                     };
                 });
             };
