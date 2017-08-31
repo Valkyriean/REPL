@@ -83,6 +83,7 @@ exports.newAssignment = function(req, res) {
         };
     });
 };
+
 exports.cloneAssignment = function (req,res) {
     Assignments.findOne({'assignmentID': req.body.assignmentID}, function (err, assignment) {
         if(err) throw err;

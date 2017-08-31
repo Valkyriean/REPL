@@ -32,17 +32,20 @@ exports.joinClasses = function(req,res){
 							Assignments.find({'classroomID': classroom.classroomID, 'type': "publish"}, {'assignmentID': true, "student": true}, function (err, assignments) {
                                  if(err) throw err;
                                  if(assignments) {
-                                 	var studentWorks
+                                 	var studentWorks;
                                  	for(var obj in assignments) {
                                  		studentWorks = obj.studentWorks.push(newStudentWorks(req.decoded));
 										Assignments.update({'assignmentID': obj.assignmentID},{'studentWorks': studentWorks}, function (err) {
 											if(err) throw err;
-										})
+											res.json({'status': 'success'});
+										});
 									}
                                  }
-                             })
+                             });
+							 res.json({'status': 'success'});
 						}else {
 							classroom.teacher.add(user.userID);
+							res.json({'status': 'success'});
 						 };
 
 
@@ -55,7 +58,7 @@ exports.joinClasses = function(req,res){
                 //classroom are closed
 				res.json({"status": "教室は開放的でない"})
 			};
-		} else {、
+		} else {
             //Jcode does not exist
 			res.json({'status':'Jcode存在しない'});
 		};
