@@ -3,8 +3,9 @@
  */
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-// var IDcounter = require('./IDcounter').nextID('Users');
-mongoose.plugin(require('../plugins/counterPlugin'));
+var IDcounter = require('./IDcounter').nextID('Users');
+// mongoose.plugin(require('../plugins/counterPlugin'));
+
 
 var User = new Schema({
     userID: Number,
@@ -15,17 +16,17 @@ var User = new Schema({
     pass: { type: String, required: true }
 });
 //
-// User.pre('save', function(next,done) {
-//     var self = this;
-//     if (this.isNew) {
-//         IDcounter.next(function (nextID) {
-//             self.UserID = nextID;
-//             next();
-//         });
-//     } else {
-//         next();
-//     }
-// });
-User.plugin(counterPlugin,{modelID:"UserID",model:"Users"});
+User.pre('save', function(next,done) {
+    var self = this;
+    if (this.isNew) {
+        IDcounter.next(function (nextID) {
+            self.UserID = nextID;
+            next();
+        });
+    } else {
+        next();
+    }
+});
+// User.plugin(counterPlugin,{modelID:"UserID",model:"Users"});
 
 module.exports = mongoose.model('User', User);
