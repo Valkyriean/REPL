@@ -18,7 +18,7 @@ describe('Classrooms',() =>{
             .post('/users/signup')
             .send({"email":"student@email.com","type":"student","firstname":"test","lastname":"test","pass":"testpass1","conf":"testpass1"})
             .end((err, res) => {
-                res.body.should.have.status(1);
+                res.body.should.have.status("success");
                 done();
             });
     });
@@ -29,7 +29,7 @@ describe('Classrooms',() =>{
             .send({"email":"student@email.com","pass":"testpass1"})
             .end((err, res) => {
                 studentToken = res.body.token;
-                res.body.should.have.status(1);
+                res.body.should.have.status("success");
                 done();
             });
     });
@@ -39,7 +39,7 @@ describe('Classrooms',() =>{
             .post('/users/signup')
             .send({"email":"teacher@email.com","type":"teacher","firstname":"test","lastname":"test","pass":"testpass1","conf":"testpass1"})
             .end((err, res) => {
-                res.body.should.have.status(1);
+                res.body.should.have.status"success");
                 done();
             });
     });
@@ -51,13 +51,13 @@ describe('Classrooms',() =>{
             .send({"email":"teacher@email.com","pass":"testpass1"})
             .end((err, res) => {
                 teacherToken = res.body.token;
-                res.body.should.have.status(1);
+                res.body.should.have.status("success");
                 done();
             });
     });
 
 
-    //先测试创建classroom 失败条件 学生无权 成功返回1
+    //先测试创建classroom 失败条件 学生无权 成功返回"success"
     //分别测试加入和退出开启关闭的时候的 两种 直接转换和setting彻底转换
     //最后分别测试有权无权时（teacher student） 的 clone transfer kicks
 
@@ -75,7 +75,7 @@ describe('Classrooms',() =>{
             })
             .end((err, res) => {
                 Jcode = res.body.Jcode;
-                res.body.should.have.status(1);
+                res.body.should.have.status("success");
                 done();
             });
     });
@@ -104,7 +104,7 @@ describe('Classrooms',() =>{
                 "joinCode":Jcode
             })
             .end((err, res) => {
-                res.body.should.have.status(1);
+                res.body.should.have.status("success");
                 done();
             });
     });
@@ -137,7 +137,7 @@ describe('Classrooms',() =>{
             .delete('/users/deleteUser')
             .send({"token":teacherToken,"pass":"testpass1"})
             .end((err, res) => {
-                res.body.should.have.status(1);
+                res.body.should.have.status("success");
                 done();
             });
     });
@@ -147,7 +147,7 @@ describe('Classrooms',() =>{
             .delete('/users/deleteUser')
             .send({"token":studentToken,"pass":"testpass1"})
             .end((err, res) => {
-                res.body.should.have.status(1);
+                res.body.should.have.status("success");
                 done();
             });
     });

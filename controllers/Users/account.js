@@ -14,10 +14,11 @@ exports.saveAccount = function(req,res){
     var newUser = new User(data);
     newUser.save(function(err) {
         if (err) {
-            res.json({"status": 131});
+            //user save failed
+            res.json({"status": "user save failed"});
         }else{
-            console.log('User saved successfully!');
-            res.json({"status": 1});
+            //save success
+            res.json({"status": "success"});
         }
     });
 };
@@ -28,10 +29,10 @@ exports.updateAccount = function(req,res){
         if(user){
             user.pass = req.encryptedNewPass;
             user.save();
-            res.json({"status": 1});
+            res.json({"status": "success"});
         }else{
-            //null user or wrong pass
-            res.json({"status": 132});
+            //user does not exist or wrong pass
+            res.json({"status": "user does not exist or wrong pass"});
         }
     });
 };
@@ -41,11 +42,10 @@ exports.deleteAccount = function(req,res){
         if(err) throw err;
         if(user){
 	        user.remove();
-	        res.json({"status": 1});
-	        console.log("delete success");
+	        res.json({"status": "success"});
         }else{
-	        console.log("user is not found or wrong pass");
-	        res.json({"status": 133});
+	        //user is not found or wrong pass
+	        res.json({"status": "user is not found or wrong pass"});
         }
     });
 };

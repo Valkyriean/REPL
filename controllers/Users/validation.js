@@ -25,13 +25,14 @@ exports.SignUpvalidation = function(req,res,next){
     var d = !goodName(req.body.firstname);
     var e = !goodName(req.body.lastname);
     if(a || b || c || d || e) {
-        res.json({"status": 121});
+        //invalid input
+        res.json({"status": "invalid input"});
     }else{
         User.findOne({'email':req.body.email},function(err,user){
             if(err) throw err;
             if(user){
-	            res.json({"status": 122});
-	            console.log('repeat email');
+                //repeat email
+	            res.json({"status": "repeat email"});
             }else{
 	            next();
 
@@ -42,9 +43,9 @@ exports.SignUpvalidation = function(req,res,next){
 
 exports.passValidation = function(req,res,next){
     if(!goodPassword(req.body.newPass)){
-        res.json({"status": 123});
+        //invalid pass
+        res.json({"status": "invalid pass"});
     }else{
         next();
     }
 };
-

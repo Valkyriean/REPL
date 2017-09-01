@@ -8,17 +8,17 @@ exports.passLogin = function(req, res) {
         if(user) {
 	        if(req.encrypted === user.pass) {
 		        res.json({
-			        "status":1,
+			        "status":"success",
 			        "token":jwt.sign({data: user.userID},secretKey),
 			        "loginToken":jwt.sign({data: user.userID},secretKey, { expiresIn: '24h' })
 		        });
 	        }
 	        else {
-		        res.json({"status": 141});
+		        res.json({"status": "wrong pass"});
 		        //wrong pass
 	        }
         }else {
-	        res.json({"status": 142});
+	        res.json({"status": "user not found"});
 	        //user not found
         }
     })
@@ -29,12 +29,13 @@ exports.tokenLogin = function(req, res) {
 		if(err) throw err;
 		if(user){
 			res.json({
-				"status":1,
+				"status":"success",
 				"token":jwt.sign({data: user.userID},secretKey),
                 "loginToken":jwt.sign({data: user.userID},secretKey, { expiresIn: '24h' })
 			});
 		}else{
-			res.json({"status": 143});
+            //user not found
+			res.json({"status": "user not found"});
 		}
 	})
 };

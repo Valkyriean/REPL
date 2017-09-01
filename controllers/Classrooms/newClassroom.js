@@ -47,12 +47,12 @@ exports.newClassroom = function(req, res) {
                     if (err) {
                         res.json({"status": "classroom save failed for no reason"});
                     }else{
-                        // if(dev){
+                        if(dev){
                             console.log('Classroom saved successfully! Jcode is '+ joinCode);
-                            res.json({"status": 1, 'Jcode': joinCode});
-                        // }else{
-                        //     res.json({"status": 1});
-                        // }
+                            res.json({"status": "success", 'Jcode': joinCode});
+                        }else{
+                            res.json({"status": "success"});
+                        }
                     };
                 });
             };

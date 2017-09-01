@@ -16,9 +16,9 @@ exports.postDashboard = function(req,res){
             res.json({"status": "请求的用户不存在"});
         }
     });
-    
+
     var data={
-        status: 1,
+        status: "success",
         type: type,
         own: null,
         teacher: null,
@@ -124,5 +124,5 @@ exports.postDashboard = function(req,res){
             };
         };
     });
-    res.json({"status": "1", "data":data});
+    res.json({"status": "success", "data":data});
 };

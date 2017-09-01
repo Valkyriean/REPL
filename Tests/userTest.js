@@ -13,7 +13,7 @@ describe('Users',() =>{
 			.post('/users/signup')
 			.send({"email":"test1@email.com","type":"teacher","firstname":"test","lastname":"test","pass":"testpass1","conf":"testpass1"})
 			.end((err, res) => {
-				res.body.should.have.status(1);
+				res.body.should.have.status("success");
 				done();
 			});
 	});
@@ -23,7 +23,7 @@ describe('Users',() =>{
 			.post('/users/signup')
 			.send({"email":"test1@email.com","type":"teacher","firstname":"test","lastname":"test","pass":"testpass1","conf":"testpass1"})
 			.end((err, res) => {
-				res.body.should.have.status(122);
+				res.body.should.have.status("repeat email");
 				done();
 			});
 	});
@@ -33,7 +33,7 @@ describe('Users',() =>{
 			.post('/users/signup')
 			.send({"email":"thisIsNotAnEmail","type":"teacher","firstname":"test","lastname":"test","pass":"testpass1","conf":"testpass1"})
 			.end((err, res) => {
-				res.body.should.have.status(121);
+				res.body.should.have.status("invalid input");
 				done();
 			});
 	});
@@ -49,7 +49,7 @@ describe('Users',() =>{
 			.end((err, res) => {
 				loginToken = res.body.loginToken;
 				token = res.body.token;
-				res.body.should.have.status(1);
+				res.body.should.have.status("success");
 				done();
 			});
 	});
@@ -59,7 +59,7 @@ describe('Users',() =>{
 			.post('/users/passLogin')
 			.send({"email":"test1@email.com","pass":"testpass2"})
 			.end((err, res) => {
-				res.body.should.have.status(141);
+				res.body.should.have.status("wrong pass");
 				done();
 			});
 	});
@@ -69,7 +69,7 @@ describe('Users',() =>{
 			.post('/users/passLogin')
 			.send({"email":"test2@email.com","pass":"testpass1"})
 			.end((err, res) => {
-				res.body.should.have.status(142);
+				res.body.should.have.status("user not found");
 				done();
 			});
 	});
@@ -80,7 +80,7 @@ describe('Users',() =>{
 			.post('/users/tokenLogin')
 			.send({"token":loginToken})
 			.end((err, res) => {
-				res.body.should.have.status(1);
+				res.body.should.have.status("success");
 				done();
 			});
 	});
@@ -90,7 +90,7 @@ describe('Users',() =>{
 			.post('/users/tokenLogin')
 			.send({"token":"fakeTokenHere"})
 			.end((err, res) => {
-				res.body.should.have.status(111);
+				res.body.should.have.status("invalid token");
 				done();
 			});
 	});
@@ -101,7 +101,7 @@ describe('Users',() =>{
 			.put('/users/changePass')
 			.send({"token":token,"oldPass":"testpass1","newPass":"testpass2"})
 			.end((err, res) => {
-				res.body.should.have.status(1);
+				res.body.should.have.status("success");
 				done();
 			});
 	});
@@ -111,7 +111,7 @@ describe('Users',() =>{
 			.put('/users/changePass')
 			.send({"token":token,"oldPass":"testpass1","newPass":"testpass2"})
 			.end((err, res) => {
-				res.body.should.have.status(132);
+				res.body.should.have.status("user does not exist or wrong pass");
 				done();
 			});
 	});
@@ -124,7 +124,7 @@ describe('Users',() =>{
 			.send({"email":"test1@email.com"})
 			.end((err, res) => {
 				retrieveToken = res.body.token;
-				res.body.should.have.status(1);
+				res.body.should.have.status("success");
 				done();
 			});
 	});
@@ -135,7 +135,7 @@ describe('Users',() =>{
 			.post('/users/findPass')
 			.send({"token":retrieveToken,"pass":"testpass1"})
 			.end((err, res) => {
-				res.body.should.have.status(1);
+				res.body.should.have.status("success");
 				done();
 			});
 	});
@@ -145,7 +145,7 @@ describe('Users',() =>{
 			.post('/users/findPass')
 			.send({"token":"randomFakeTokenHere","pass":"testpass1"})
 			.end((err, res) => {
-				res.body.should.have.status(151);
+				res.body.should.have.status("invalid token");
 				done();
 			});
 	});
@@ -156,7 +156,7 @@ describe('Users',() =>{
 			.delete('/users/deleteUser')
 			.send({"token":token,"pass":"testpass1"})
 			.end((err, res) => {
-				res.body.should.have.status(1);
+				res.body.should.have.status("success");
 				done();
 			});
 	});
@@ -166,7 +166,7 @@ describe('Users',() =>{
 			.delete('/users/deleteUser')
 			.send({"token":token,"pass":"testpass2"})
 			.end((err, res) => {
-				res.body.should.have.status(133);
+				res.body.should.have.status("user is not found or wrong pass");
 				done();
 			});
 	});

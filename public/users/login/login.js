@@ -10,16 +10,16 @@ app.controller('LoginCont', function($cookieStore, $scope, $state, $http) {
         $http.post('/api/users/passLogin', $scope.data).then(function(res) {
             console.log(res);
             switch(res.data.status) {
-                case 1:
+                case "success":
                     $state.go('classroom');
                     break;
-                case 142:
+                case "user not found":
                     alert("Sorry, email address does not exist. ");
                     break;
-                case 141:
+                case "wrong pass":
                     alert("Sorry, your password is not correct. ");
                     break;
-                case 143:
+                case "user not found":
                     console.log("Token is not available for login. ");
                     break;
                 default:

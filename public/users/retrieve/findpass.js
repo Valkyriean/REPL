@@ -14,15 +14,15 @@ app.controller('FindpassCont', function($scope, $state, $http) {
         $http.post('/api/users/findPass', $scope.data).then(function(res) {
             console.log(res);
             switch(res.data.status) {
-                case 1:
+                case "success":
                     alert("Change successfully.");
                     $state.go('classroom');
                     $cookieStore.put("WatchCatLoginToken", res.data.token);
                     break;
-                case 151:
+                case "invalid token":
                     alert("Link expired, please retrieve again");
                     break;
-                case 152:
+                case "invalid token":
                     alert("Account not exist");
                     break;
             }

@@ -8,7 +8,7 @@ app.controller('NewClassroomCont', function($scope, $state, $http) {
     };
     $scope.confirm = function() {
         $http.post('/api/classroom/newClassroom', $scope.data).then(function(res){
-            if(res.data.status === 1) {
+            if(res.data.status === "success") {
                 alert("Check the email to change your password.");
             } else {
                 alert("Fail to create a class room.");
