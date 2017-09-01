@@ -31,9 +31,6 @@ exports.joinClasses = function(req,res){
 			if(classroom.allowToEnter) {
 				Users.findOne({'userID':req.decoded},function(err,user){
 					if(err) throw err;
-                    console.log(classroom);
-
-                    console.log(typeof(classroom.student));
                     var stu = new Array();
                     stu = classroom.student;
                     console.log(typeof(stu));
@@ -45,7 +42,9 @@ exports.joinClasses = function(req,res){
 					//owner can not join his own classroom as a teacher
 					if(user){
 						 if(user.type === 'student'){
-							classroom.student.push(user.userID);
+						 	Classrooms.update({'joinCode': req.body.joinCode}, {$push: {student: req.decoded}}, function (err) {
+								if(err) throw err
+                            });
 							Assignments.find({'classroomID': classroom.classroomID, 'type': "publish"}, {'assignmentID': true, "student": true}, function (err, assignments) {
                                  if(err) throw err;
                                  if(assignments) {
@@ -61,7 +60,9 @@ exports.joinClasses = function(req,res){
                              });
 							 res.json({'status': 'success'});
 						}else {
-							classroom.teacher.add(user.userID);
+                             Classrooms.update({'joinCode': req.body.joinCode}, {$push: {teacher: req.decoded}}, function (err) {
+                                 if(err) throw err
+                             });
 							res.json({'status': 'success'});
 						 };
 

@@ -39,7 +39,7 @@ describe('Classrooms',() =>{
             .post('/users/signup')
             .send({"email":"teacher@email.com","type":"teacher","firstname":"test","lastname":"test","pass":"testpass1","conf":"testpass1"})
             .end((err, res) => {
-                res.body.should.have.status"success");
+                res.body.should.have.status("success");
                 done();
             });
     });

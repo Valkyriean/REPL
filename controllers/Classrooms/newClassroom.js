@@ -35,8 +35,8 @@ exports.newClassroom = function(req, res) {
 
                 var data = {
                     owner: req.decoded,
-                    teacher: [],
-                    student: [],
+                    teacher: new Array,
+                    student: new Array,
                     name: req.body.name,
                     description: req.body.description,
                     programLanguage: req.body.programLanguage,
