@@ -57,7 +57,7 @@ describe('Classrooms',() =>{
     });
 
 
-    //先测试创建classroom 失败条件 学生无权 成功返回"success"
+    //先测试创建classroom 失败条件 学生无权 成功返回"success"
     //分别测试加入和退出开启关闭的时候的 两种 直接转换和setting彻底转换
     //最后分别测试有权无权时（teacher student） 的 clone transfer kicks
 
@@ -109,7 +109,21 @@ describe('Classrooms',() =>{
             });
     });
 
-    //额成功加入的code有点问题于是就先写失败加入的了
+    //学生再次加入已经在里面的教室结果重复加入理应失败
+    it('student join classroom he was already in', (done) => {
+        chai.request(endPoint)
+            .post('/classrooms/joinClassroom')
+            .send({
+                "token":studentToken,
+                "joinCode":Jcode
+            })
+            .end((err, res) => {
+                res.body.should.have.status("already in there");
+                done();
+            });
+    });
+
+    //失败加入
     //Jocde不存在
     it('student join classroom using wrong Jcode', (done) => {
         chai.request(endPoint)
