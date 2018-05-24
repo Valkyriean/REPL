@@ -1,5 +1,16 @@
 # REPL
 
+Our Vision:     
+    FLAWLESS
+    UNALTERABLE
+    CIRCUMSPECT
+    KNOWLEDGEABLE
+    DELECTABLE
+    APOCALYPTIC
+    VENERABLE
+    ILLUMINATING
+    DISTINCTIVE
+
 What is this?
 This project is aiming to build a online platform that allows student write, run ,and test code online to finish coding related assignment.
 Also teacher can set up the auto correction to correct student's code.
