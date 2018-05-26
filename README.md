@@ -1,6 +1,6 @@
 # REPL
 
-Our Vision:     
+##Our Vision:     
     FLAWLESS
     UNALTERABLE
     CIRCUMSPECT
@@ -11,17 +11,22 @@ Our Vision:
     ILLUMINATING
     DISTINCTIVE
 
-What is this?
+##What is this?
 This project is aiming to build a online platform that allows student write, run ,and test code online to finish coding related assignment.
 Also teacher can set up the auto correction to correct student's code.
 
 
 RDFZXS 17' CSP Project
-This is the Senior project for RDFZXS 17' CSP class.
+This was the Senior project for RDFZXS 17' CSP class.
 All Rights Reserved
 
+##TODO list:
+-Fix the README.md
+-write a documentation
+-Standardize the protocol (fix those weird Japanese)
+-modify the outdated packages (crypto for example)
 
-MVP for REPL
+##MVP for REPL
 1.	The REPL is supposed to allow users to sign up and log in.
     1)	Validation
     2)	Token login
