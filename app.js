@@ -26,17 +26,18 @@ app.use('/api',api);
  * Created by Li on 2017/1/16.
  * Code to run Mongod on Windows
  * open cmd first, and copy those code
+ * In default db location
  *
  *================================================
- *              cd C:\Program Files\MongoDB\Server\3.2\bin
- *              mongod --dbpath C:\Projects\data\db
+ *              "C:\Program Files\MongoDB\Server\3.6\bin\mongod.exe"
  *
- *              cd C:\Users\phant\WebstormProjects\REPL
+ * Start code for Alex
+ *              cd C:\Users\phant\Documents\GitHub\REPL
  *              node app.js
- *              cd C:\Users\phant\WebstormProjects\REPL\Tests
+ *              cd C:\Users\phant\Documents\GitHub\REPL\Tests
  *              mocha
  *
- *
+ * Start code for
  *
  *
  *
