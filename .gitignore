@@ -49,7 +49,7 @@ Temporary Items
 # Customed by Alex
 .idea/*
 .vs/*
-# node_modules/*
+node_modules/*
 public/a-lib/*
 # not sure yet .bin/*
 
